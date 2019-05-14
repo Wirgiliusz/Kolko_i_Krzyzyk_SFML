@@ -15,8 +15,8 @@ void Pole::zmienStan(char znak) {
 }
 
 bool Pole::isEmpty() {
-    if(stan == ' ')
-        return true;
-    else
+    if(stan == 'X' || stan == 'O')
         return false;
+    else
+        return true;
 }

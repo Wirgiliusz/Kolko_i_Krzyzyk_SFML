@@ -12,9 +12,16 @@ Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
         macierzPol[i] = new Pole* [wielkosc_planszy];   //wpisuje tablice to tablicy tworzac macierz wskaznikow na pola
     }
 
+    int numer_pola = 49;
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int j=0; j<wielkosc_planszy; j++) {
-            macierzPol[i][j] = new Pole();      //wypelnia macierz pustymi polami
+            macierzPol[i][j] = new Pole('0'+numer_pola);      //wypelnia macierz pustymi polami
+            numer_pola++;
+            /*
+            if(numer_pola == 10) {
+                numer_pola += 39; 
+            }
+            */
         }
     }
 }

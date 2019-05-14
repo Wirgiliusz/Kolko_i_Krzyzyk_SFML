@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     GameMaster GM;  
-    GM.plansza = GM.stworzPlansze(3,3);
+    GM.plansza = GM.stworzPlansze(5,3);
 
     GM.plansza->wyswietlPlansze();
 
