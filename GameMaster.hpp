@@ -11,6 +11,6 @@ class GameMaster {
     Gracz* aktualnyGracz;
 
     GameMaster();
-    Plansza* stworzPlansze(int wielkosc_planszy);
+    Plansza* stworzPlansze(int wielkosc_planszy, int warunek_wygranej);
     void nastepnaTura();
 };

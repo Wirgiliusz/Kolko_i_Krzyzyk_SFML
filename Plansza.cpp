@@ -4,7 +4,8 @@
 using namespace std;
 
 
-Plansza::Plansza(int wielkosc_planszy) {
+Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
+    this->warunek_wygranej = warunek_wygranej;
     this->wielkosc_planszy = wielkosc_planszy;
     macierzPol = new Pole** [wielkosc_planszy];     //nowa tablica na tablice
     for(int i=0; i<wielkosc_planszy; i++) {

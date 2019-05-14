@@ -4,12 +4,12 @@
 GameMaster::GameMaster() {
     graczX = new Gracz('X');
     graczO = new Gracz('O');
-    plansza = stworzPlansze(3);
+    plansza = stworzPlansze(3, 3);
     aktualnyGracz = graczX;
 }
 
-Plansza* GameMaster::stworzPlansze(int wielkosc_planszy) {
-    return new Plansza(wielkosc_planszy);
+Plansza* GameMaster::stworzPlansze(int wielkosc_planszy, int warunek_wygranej) {
+    return new Plansza(wielkosc_planszy, warunek_wygranej);
 }
 
 void GameMaster::nastepnaTura() {
