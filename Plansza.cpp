@@ -20,13 +20,19 @@ Plansza::Plansza(int wielkosc_planszy) {
 
 void Plansza::wyswietlPlansze() {
     for(int i=0; i<wielkosc_planszy; i++) {
-        for(int j=0; j<wielkosc_planszy; j++) {
-            cout << "|" << macierzPol[i][j];
-        }
-        cout << endl;
         for(int k=0; k<wielkosc_planszy; k++) {
             cout << "+-";
         }
         cout << "+" << endl;
+
+        for(int j=0; j<wielkosc_planszy; j++) {
+            cout << "|" << macierzPol[i][j]->stan;
+        }
+        cout << "|" << endl;
     }
+
+    for(int k=0; k<wielkosc_planszy; k++) {
+        cout << "+-";
+    }
+    cout << "+" << endl << endl;
 }
