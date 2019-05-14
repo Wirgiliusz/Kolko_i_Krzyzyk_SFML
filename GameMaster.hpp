@@ -9,9 +9,10 @@ class GameMaster {
     Gracz* graczO;
     Plansza* plansza;
     Gracz* aktualnyGracz;
+    int wielkosc_planszy;
 
     GameMaster();
     Plansza* stworzPlansze(int wielkosc_planszy, int warunek_wygranej);
     void nastepnaTura();
-    bool ruch(int numer_pola);
+    bool ruch(char numer_pola);
 };
