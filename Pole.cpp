@@ -1,6 +1,11 @@
 #include "Pole.hpp"
 
 
+
+Pole::Pole(char stan) {
+    this->stan = stan;
+}
+
 Pole::Pole() {
     this->stan = ' ';
 }
