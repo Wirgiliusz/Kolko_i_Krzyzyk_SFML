@@ -7,5 +7,5 @@ class Gracz {
     char znak;
 
     Gracz(char znak) { this->znak = znak; }
-    bool wykonajRuch(Pole pole);
+    bool wykonajRuch(Pole* pole);
 };
