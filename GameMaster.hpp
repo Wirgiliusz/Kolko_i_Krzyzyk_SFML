@@ -1,4 +1,7 @@
+#pragma once
 
+#include "Gracz.hpp"
+#include "Plansza.hpp"
 
 class GameMaster {
     public:

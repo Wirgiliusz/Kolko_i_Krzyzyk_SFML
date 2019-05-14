@@ -1,4 +1,6 @@
+#pragma once
 
+#include "Pole.hpp"
 
 class Plansza {
     public:

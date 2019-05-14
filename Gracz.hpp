@@ -1,4 +1,6 @@
+#pragma once
 
+#include "Pole.hpp"
 
 class Gracz {
     public:
@@ -6,4 +8,4 @@ class Gracz {
 
     Gracz(char znak);
     bool wykonajRuch(Pole pole);
-}
+};
