@@ -9,7 +9,7 @@ int main() {
 
     GM.plansza->wyswietlPlansze();
 
-    GM.aktualnyGracz->wykonajRuch(GM.plansza->macierzPol[1][1]);
+    GM.aktualnyGracz->wykonajRuch(GM.plansza->macierzPol[0][0]);
     cout << "Wygrana: " << GM.plansza->wygrana() << endl;
     GM.plansza->wyswietlPlansze();
     GM.nastepnaTura();
@@ -19,7 +19,7 @@ int main() {
     GM.plansza->wyswietlPlansze();
     GM.nastepnaTura();
 
-    GM.aktualnyGracz->wykonajRuch(GM.plansza->macierzPol[0][2]);
+    GM.aktualnyGracz->wykonajRuch(GM.plansza->macierzPol[0][1]);
     cout << "Wygrana: " << GM.plansza->wygrana() << endl;
     GM.plansza->wyswietlPlansze();
     GM.nastepnaTura();
@@ -29,7 +29,7 @@ int main() {
     GM.plansza->wyswietlPlansze();
     GM.nastepnaTura();
 
-    GM.aktualnyGracz->wykonajRuch(GM.plansza->macierzPol[2][0]);
+    GM.aktualnyGracz->wykonajRuch(GM.plansza->macierzPol[0][2]);
     cout << "Wygrana: " << GM.plansza->wygrana() << endl;
     GM.plansza->wyswietlPlansze();
 

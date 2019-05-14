@@ -39,31 +39,68 @@ void Plansza::wyswietlPlansze() {
 }
 
 bool Plansza::wygrana() {
+    bool win = true;
     //przechodzi przez wszystkie pola
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int j=0; j<wielkosc_planszy; j++) {
             if(!macierzPol[i][j]->isEmpty()) {  //jesli pole nie jest puste
                 if(j+warunek_wygranej-1 < wielkosc_planszy) {  //jesli kolejne dwa pola w prawo nie wychodza za plansze
-                    if(macierzPol[i][j]->stan == macierzPol[i][j+1]->stan && macierzPol[i][j]->stan == macierzPol[i][j+warunek_wygranej-1]->stan) {  //jesli dwa kolejne pola w prawo maja taki sam stan
-                        return true; //to wygrana
+                    for(int k=1; k<warunek_wygranej; k++) { //przechodzi przez kolejne pola
+                        if(macierzPol[i][j]->stan != macierzPol[i][j+k]->stan) {    //jesli ktores nie jest takie samo jak poprzednie
+                            win = false;    //to nie ma tutaj wygranej
+                            break;
+                        }
+                    }
+                    if(win) {   //jesli nie znaleziono przeciwskazania do wygranej
+                        return true;    //to wygrana
+                    } 
+                    else {  //w innym przypadku brak
+                        win = true; //i reset
                     }
                 }
 
                 if(i+warunek_wygranej-1 < wielkosc_planszy) {  //jesli kolejne dwa pola w dol nie wychodza za plansze
-                    if(macierzPol[i][j]->stan == macierzPol[i+1][j]->stan && macierzPol[i][j]->stan == macierzPol[i+warunek_wygranej-1][j]->stan) {  //jesli dwa kolejne pola w dol maja taki sam stan
-                        return true; //to wygrana
+                    for(int k=1; k<warunek_wygranej; k++) { //przechodzi przez kolejne pola
+                        if(macierzPol[i][j]->stan != macierzPol[i+k][j]->stan) {    //jesli ktores nie jest takie samo jak poprzednie
+                            win = false;    //to nie ma tutaj wygranej
+                            break;
+                        }
+                    }
+                    if(win) {   //jesli nie znaleziono przeciwskazania do wygranej
+                        return true;    //to wygrana
+                    } 
+                    else {  //w innym przypadku brak
+                        win = true; //i reset
                     }
                 }
 
                 if(i+warunek_wygranej-1 < wielkosc_planszy && j+warunek_wygranej-1 < wielkosc_planszy) {  //jesli kolejne dwa pola w prawo i w dol nie wychodza za plansze
-                    if(macierzPol[i][j]->stan == macierzPol[i+1][j+1]->stan && macierzPol[i][j]->stan == macierzPol[i+warunek_wygranej-1][j+warunek_wygranej-1]->stan) {  //jesli dwa kolejne pola w prawo i w dol maja taki sam stan
-                        return true; //to wygrana
+                    for(int k=1; k<warunek_wygranej; k++) { //przechodzi przez kolejne pola
+                        if(macierzPol[i][j]->stan != macierzPol[i+k][j+k]->stan) {    //jesli ktores nie jest takie samo jak poprzednie
+                            win = false;    //to nie ma tutaj wygranej
+                            break;
+                        }
+                    }
+                    if(win) {   //jesli nie znaleziono przeciwskazania do wygranej
+                        return true;    //to wygrana
+                    } 
+                    else {  //w innym przypadku brak
+                        win = true; //i reset
                     }
                 }
 
-                if(i-warunek_wygranej-1 >= 0 && j+warunek_wygranej-1 < wielkosc_planszy) {  //jesli kolejne dwa pola w lewo i w dol nie wychodza za plansze
-                    if(macierzPol[i][j]->stan == macierzPol[i-1][j+1]->stan && macierzPol[i][j]->stan == macierzPol[i-warunek_wygranej-1][j+warunek_wygranej-1]->stan) {  //jesli dwa kolejne pola w lewo i w dol maja taki sam stan
-                        return true; //to wygrana
+                if(i-warunek_wygranej+1 >= 0 && j+warunek_wygranej-1 < wielkosc_planszy) {  //jesli kolejne dwa pola w lewo i w dol nie wychodza za plansze
+                    for(int k=1; k<warunek_wygranej; k++) { //przechodzi przez kolejne pola
+                        if(macierzPol[i][j]->stan != macierzPol[i-k][j+k]->stan) {    //jesli ktores nie jest takie samo jak poprzednie
+                            win = false;    //to nie ma tutaj wygranej
+                            break;
+                        }
+                    }
+                    if(win) {   //jesli nie znaleziono przeciwskazania do wygranej
+                        return true;    //to wygrana
+                    } 
+                    else {  //w innym przypadku brak
+                        win = true; //i reset
                     }
                 }
 
