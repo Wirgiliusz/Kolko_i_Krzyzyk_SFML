@@ -53,8 +53,8 @@ int main() {
 
 [x] 1. Mozliwosc zmiany wielkosci planszy
 [x] 2. Sprawdzanie wygranej dla roznych warunkow wygranej
-[ ] 3. Latwiejsze wybieranie pola do postawienia znaku:
-        [ ] a. jako cyfra 1-9 (jednak litery a-z)
+[x] 3. Latwiejsze wybieranie pola do postawienia znaku:
+        [x] a. jako cyfra 1-9 (jednak litery a-z)
         [x] b. odpowiednie wyswietlenie planszy
 
 */
