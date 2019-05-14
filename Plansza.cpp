@@ -43,25 +43,25 @@ bool Plansza::wygrana() {
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int j=0; j<wielkosc_planszy; j++) {
             if(!macierzPol[i][j]->isEmpty()) {  //jesli pole nie jest puste
-                if(j+1 < wielkosc_planszy && j+2 < wielkosc_planszy) {  //jesli kolejne dwa pola w prawo nie wychodza za plansze
+                if(j+2 < wielkosc_planszy) {  //jesli kolejne dwa pola w prawo nie wychodza za plansze
                     if(macierzPol[i][j]->stan == macierzPol[i][j+1]->stan && macierzPol[i][j]->stan == macierzPol[i][j+2]->stan) {  //jesli dwa kolejne pola w prawo maja taki sam stan
                         return true; //to wygrana
                     }
                 }
 
-                if(i+1 < wielkosc_planszy && i+2 < wielkosc_planszy) {  //jesli kolejne dwa pola w dol nie wychodza za plansze
+                if(i+2 < wielkosc_planszy) {  //jesli kolejne dwa pola w dol nie wychodza za plansze
                     if(macierzPol[i][j]->stan == macierzPol[i+1][j]->stan && macierzPol[i][j]->stan == macierzPol[i+2][j]->stan) {  //jesli dwa kolejne pola w dol maja taki sam stan
                         return true; //to wygrana
                     }
                 }
 
-                if(i+1 < wielkosc_planszy && i+2 < wielkosc_planszy && j+1 < wielkosc_planszy && j+2 < wielkosc_planszy) {  //jesli kolejne dwa pola w prawo i w dol nie wychodza za plansze
+                if(i+2 < wielkosc_planszy && j+2 < wielkosc_planszy) {  //jesli kolejne dwa pola w prawo i w dol nie wychodza za plansze
                     if(macierzPol[i][j]->stan == macierzPol[i+1][j+1]->stan && macierzPol[i][j]->stan == macierzPol[i+2][j+2]->stan) {  //jesli dwa kolejne pola w prawo i w dol maja taki sam stan
                         return true; //to wygrana
                     }
                 }
 
-                if(i-1 >= 0 && i-2 >= 0 && j+1 < wielkosc_planszy && j+2 < wielkosc_planszy) {  //jesli kolejne dwa pola w lewo i w dol nie wychodza za plansze
+                if(i-2 >= 0 && j+2 < wielkosc_planszy) {  //jesli kolejne dwa pola w lewo i w dol nie wychodza za plansze
                     if(macierzPol[i][j]->stan == macierzPol[i-1][j+1]->stan && macierzPol[i][j]->stan == macierzPol[i-2][j+2]->stan) {  //jesli dwa kolejne pola w lewo i w dol maja taki sam stan
                         return true; //to wygrana
                     }
