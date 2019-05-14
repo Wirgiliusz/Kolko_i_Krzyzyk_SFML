@@ -4,7 +4,8 @@
 
 class Plansza {
     public:
-    Pole* macierzPol;
+    Pole*** macierzPol;
+    int wielkosc_planszy;
     
     Plansza(int wielkosc_planszy);
     void wyswietlPlansze();
