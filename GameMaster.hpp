@@ -18,4 +18,6 @@ class GameMaster {
 
     bool czyZostalyRuchy();
     int ocen();
+    int minimax(int glebokosc, bool isMax);
+    char znajdzNajlepszyRuch();
 };
