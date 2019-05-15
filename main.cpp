@@ -24,6 +24,7 @@ int main() {
         GM.nastepnaTura();
         wykonanoRuch = false;
     }
+    cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
 
 
     cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
