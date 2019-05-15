@@ -44,7 +44,7 @@ int main() {
         [x] b. odpowiednie wyswietlenie planszy
 
 [ ] 4. Interfejs:
-    [ ] a. input uzytkownika
+    [x] a. input uzytkownika
     [ ] b. czyszczenie konsoli
     [x] c. kolory
 
