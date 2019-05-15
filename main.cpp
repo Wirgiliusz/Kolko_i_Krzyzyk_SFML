@@ -47,7 +47,9 @@ int main() {
     GM.plansza->wyswietlPlansze();
 
     cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
+    system("pause");
     return 0;
+
 }
 
 /*
