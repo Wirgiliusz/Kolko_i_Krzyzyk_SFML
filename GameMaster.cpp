@@ -6,7 +6,7 @@ GameMaster::GameMaster() {
     graczX = new Gracz('X');
     graczO = new Gracz('O');
     plansza = stworzPlansze(3, 3);
-    aktualnyGracz = graczX;
+    aktualnyGracz = graczO;
 }
 
 Plansza* GameMaster::stworzPlansze(int wielkosc_planszy, int warunek_wygranej) {

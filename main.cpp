@@ -14,15 +14,16 @@ int main() {
 
     // --- Glowna petla gry --- //
     while(!GM.plansza->wygrana()) {
+        GM.nastepnaTura();
+        
+        cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
         cin >> input;
         while(wykonanoRuch != true) {
             wykonanoRuch = GM.ruch(input);
         }
-        cout << "Wygrana: " << GM.plansza->wygrana() << endl;
+        wykonanoRuch = false;
 
         GM.plansza->wyswietlPlansze();
-        GM.nastepnaTura();
-        wykonanoRuch = false;
     }
     cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
 

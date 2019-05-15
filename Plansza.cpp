@@ -28,6 +28,7 @@ Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
 }
 
 void Plansza::wyswietlPlansze() {
+    cout << endl;
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int k=0; k<wielkosc_planszy; k++) {
             cout << fgB::yellow << "+-";
@@ -53,7 +54,7 @@ void Plansza::wyswietlPlansze() {
     for(int k=0; k<wielkosc_planszy; k++) {
         cout << fgB::yellow << "+-";
     }
-    cout << "+" << endl << endl;
+    cout << "+" << endl;
     cout << fg::reset;
 }
 
