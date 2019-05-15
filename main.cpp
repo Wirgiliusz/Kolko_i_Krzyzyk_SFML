@@ -33,18 +33,18 @@ int main() {
     while(!GM.plansza->wygrana()) {
         GM.nastepnaTura();
         
+        cout << "Ruch gracza " << GM.aktualnyGracz->znak << ".";
+        GM.ruch(GM.znajdzNajlepszyRuch());
+
+        GM.plansza->wyswietlPlansze();
+        GM.nastepnaTura();
+
         cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
         cin >> input;
         while(wykonanoRuch != true) {
             wykonanoRuch = GM.ruch(input);
         }
         wykonanoRuch = false;
-
-        GM.plansza->wyswietlPlansze();
-        GM.nastepnaTura();
-        
-        cout << "Ruch gracza " << GM.aktualnyGracz->znak << ".";
-        GM.ruch(GM.znajdzNajlepszyRuch());
 
         GM.plansza->wyswietlPlansze();
     }
@@ -72,6 +72,11 @@ int main() {
     [x] c. kolory
 
 [ ] 5. Algorytm komputera:
+    -> naprawic: wybiera pola po kolei
 
 [ ] 6. Grafika:
+
+    NAPRAWIC:
+        a. algorytm wybiera pola po kolei (nie dziala)
+        b. czasem zle wyswietla gracza ktory wygral
 */
