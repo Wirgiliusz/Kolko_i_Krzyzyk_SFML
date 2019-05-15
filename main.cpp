@@ -1,4 +1,5 @@
 #include "GameMaster.hpp"
+#include "rang.hpp"
 #include <iostream>
 
 using namespace std;
@@ -45,6 +46,7 @@ int main() {
     cout << "Wygrana: " << GM.plansza->wygrana() << endl;
     GM.plansza->wyswietlPlansze();
 
+    cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
     return 0;
 }
 
