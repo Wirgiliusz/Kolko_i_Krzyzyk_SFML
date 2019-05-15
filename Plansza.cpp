@@ -28,13 +28,19 @@ Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
 }
 
 void Plansza::wyswietlPlansze() {
+    bool tylkoRaz = false;
+    bool tylkoRaz2 = false;
     cout << endl;
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int k=0; k<wielkosc_planszy; k++) {
             cout << fgB::yellow << "+-";
         }
-        cout << "+" << endl;
-        cout << fg::reset;
+        cout << "+" << fg::reset;
+        if(!tylkoRaz) {
+            cout << "\t Wymiar planszy: " << wielkosc_planszy << "x" << wielkosc_planszy;
+            tylkoRaz = true;
+        }
+        cout << endl;
 
         for(int j=0; j<wielkosc_planszy; j++) {
             cout << fgB::yellow << "|" << fg::reset;
@@ -48,7 +54,12 @@ void Plansza::wyswietlPlansze() {
             cout << macierzPol[i][j]->stan;
             cout << fg::reset << style::reset;
         }
-        cout << fgB::yellow << "|" << fg::reset << endl;
+        cout << fgB::yellow << "|" << fg::reset ;
+        if(!tylkoRaz2) {
+            cout << "\t Warunek wygranej: " << warunek_wygranej << " z rzedu";
+            tylkoRaz2 = true;
+        }
+        cout << endl;
     }
 
     for(int k=0; k<wielkosc_planszy; k++) {
