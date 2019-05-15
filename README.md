@@ -1,6 +1,6 @@
 # Kolko i Krzyzyk
 
-![Text](https://puu.sh/DspRb/5c236afe7f.png "Game Screen")
+![Text](https://puu.sh/DszRf/e6a09dab69.png "Game Screen")
 
 ## TODO
 - [x] 1. Mozliwosc zmiany wielkosci planszy
