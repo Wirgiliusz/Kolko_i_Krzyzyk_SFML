@@ -62,9 +62,11 @@ int main() {
 [x] 3. Latwiejsze wybieranie pola do postawienia znaku:
         [x] a. jako cyfra 1-9 (jednak litery a-z)
         [x] b. odpowiednie wyswietlenie planszy
+
 [ ] 4. Interfejs:
     [ ] a. input uzytkownika
     [ ] b. czyszczenie konsoli
+    [x] c. kolory
 
 [ ] 5. Algorytm komputera:
 
