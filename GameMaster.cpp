@@ -31,3 +31,16 @@ bool GameMaster::ruch(char numer_pola) {
     }
     return false;
 }
+
+bool GameMaster::czyZostalyRuchy() {
+    for(int i=0; i<wielkosc_planszy; i++) {
+        for(int j=0; j<wielkosc_planszy; j++) {
+            if(plansza->macierzPol[i][j]->isEmpty) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+int GameMaster::ocen() {}

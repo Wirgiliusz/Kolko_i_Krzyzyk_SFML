@@ -15,4 +15,7 @@ class GameMaster {
     Plansza* stworzPlansze(int wielkosc_planszy, int warunek_wygranej);
     void nastepnaTura();
     bool ruch(char numer_pola);
+
+    bool czyZostalyRuchy();
+    int ocen();
 };
