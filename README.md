@@ -1,6 +1,8 @@
-# Kolko_i_Krzyzyk
-## TODO
+# Kolko i Krzyzyk
 
+![Text](https://puu.sh/DspRb/5c236afe7f.png "Game Screen")
+
+## TODO
 - [x] 1. Mozliwosc zmiany wielkosci planszy
 
 - [x] 2. Sprawdzanie wygranej dla roznych warunkow wygranej
@@ -12,7 +14,8 @@
 - [ ] 4. Interfejs:
     - [ ] a. input uzytkownika
     - [ ] b. czyszczenie konsoli
-
+	- [x] c. kolory
+	
 - [ ] 5. Algorytm komputera:
 
 - [ ] 6. Grafika:
