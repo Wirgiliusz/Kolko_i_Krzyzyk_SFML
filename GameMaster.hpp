@@ -2,6 +2,7 @@
 
 #include "Gracz.hpp"
 #include "Plansza.hpp"
+#include <vector>
 
 class GameMaster {
     public:
@@ -15,9 +16,14 @@ class GameMaster {
     Plansza* stworzPlansze(int wielkosc_planszy, int warunek_wygranej);
     void nastepnaTura();
     bool ruch(char numer_pola);
-
+    
     bool czyZostalyRuchy();
     int ocen();
     int minimax(int glebokosc, bool isMax);
     char znajdzNajlepszyRuch();
+    
+    /*
+    std::vector<Pole*> pustePola();
+    int minimax();
+    */
 };

@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <iostream>
 
+
 GameMaster::GameMaster() {
     this->wielkosc_planszy = 3;
     graczX = new Gracz('X');
@@ -126,3 +127,24 @@ char GameMaster::znajdzNajlepszyRuch() {
     }
     return najlepszyRuch;
 }
+
+/*
+std::vector<Pole*> GameMaster::pustePola() {
+    std::vector<Pole*> vecP;
+
+    for(int i=0; i<wielkosc_planszy; i++) {
+        for(int j=0; j<wielkosc_planszy; j++) {
+            if(plansza->macierzPol[i][j]->isEmpty()) {
+                vecP.push_back(plansza->macierzPol[i][j]);
+            }
+        }
+    }
+    return vecP;
+}
+
+int GameMaster::minimax() {
+    std::vector<Pole*> dostepnePola = pustePola();
+
+
+}
+*/
