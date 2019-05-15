@@ -1,8 +1,9 @@
 #include "Plansza.hpp"
+#include "rang.hpp"
 #include <iostream>
 
 using namespace std;
-
+using namespace rang;
 
 Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
     this->warunek_wygranej = warunek_wygranej;
@@ -29,20 +30,31 @@ Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
 void Plansza::wyswietlPlansze() {
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int k=0; k<wielkosc_planszy; k++) {
-            cout << "+-";
+            cout << fgB::yellow << "+-";
         }
         cout << "+" << endl;
+        cout << fg::reset;
 
         for(int j=0; j<wielkosc_planszy; j++) {
-            cout << "|" << macierzPol[i][j]->stan;
+            cout << fgB::yellow << "|" << fg::reset;
+            if(macierzPol[i][j]->stan == 'X')
+                cout << fgB::red << style::bold;
+            else if(macierzPol[i][j]->stan == 'O')
+                cout << fgB::green << style::bold;
+            else {
+                cout << fg::gray << style::dim;
+            }
+            cout << macierzPol[i][j]->stan;
+            cout << fg::reset << style::reset;
         }
-        cout << "|" << endl;
+        cout << fgB::yellow << "|" << fg::reset << endl;
     }
 
     for(int k=0; k<wielkosc_planszy; k++) {
-        cout << "+-";
+        cout << fgB::yellow << "+-";
     }
     cout << "+" << endl << endl;
+    cout << fg::reset;
 }
 
 bool Plansza::wygrana() {

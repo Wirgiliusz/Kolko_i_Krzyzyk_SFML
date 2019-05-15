@@ -1,4 +1,5 @@
 #include "GameMaster.hpp"
+#include "rang.hpp"
 #include <iostream>
 
 using namespace std;
@@ -45,7 +46,10 @@ int main() {
     cout << "Wygrana: " << GM.plansza->wygrana() << endl;
     GM.plansza->wyswietlPlansze();
 
+    cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
+    system("pause");
     return 0;
+
 }
 
 /*
@@ -58,9 +62,11 @@ int main() {
 [x] 3. Latwiejsze wybieranie pola do postawienia znaku:
         [x] a. jako cyfra 1-9 (jednak litery a-z)
         [x] b. odpowiednie wyswietlenie planszy
+
 [ ] 4. Interfejs:
     [ ] a. input uzytkownika
     [ ] b. czyszczenie konsoli
+    [x] c. kolory
 
 [ ] 5. Algorytm komputera:
 
