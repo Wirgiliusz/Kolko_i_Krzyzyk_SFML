@@ -8,71 +8,73 @@ using namespace std;
 int main() {
     GameMaster GM;
     char input;
+    bool vsComputer;
     bool wykonanoRuch = false;
-    GM.plansza = GM.stworzPlansze(4,3);
-    GM.plansza->wyswietlPlansze();
 
-    // --- Glowna petla gry --- //
-    /*
-    while(true) {
-        GM.nastepnaTura();
-        
-        cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
-        cin >> input;
-        while(wykonanoRuch != true) {
-            wykonanoRuch = GM.ruch(input);
-        }
-        wykonanoRuch = false;
+    //GM.plansza = GM.stworzPlansze(5,3);
+    //GM.plansza->wyswietlPlansze();
 
-        GM.plansza->wyswietlPlansze();
-        if(GM.plansza->wygrana(GM.aktualnyGracz)) {
-            cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
-            break;
-        }
-        else if(!GM.czyZostalyRuchy()) {
-            cout << "Remis!" << endl;
-            break;
-        }
-    }
-    */
-    
-    while(true) {
-        // ruch gracza
-        GM.nastepnaTura();
-        cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
-        cin >> input;
-        while(wykonanoRuch != true) {
-            wykonanoRuch = GM.ruch(input);
-        }
-        wykonanoRuch = false;
-
-        GM.plansza->wyswietlPlansze();
-        if(GM.plansza->wygrana(GM.aktualnyGracz)) {
-            cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
-            break;
-        }
-        else if(!GM.czyZostalyRuchy()) {
-            cout << "Remis!" << endl;
-            break;
-        }
-
-        //ruch komputera
-        GM.nastepnaTura();
-        cout << "Ruch komputera " << GM.aktualnyGracz->znak << ".";
-        GM.ruch(GM.znajdzNajlepszyRuch());
-
-        GM.plansza->wyswietlPlansze();
-        if(GM.plansza->wygrana(GM.aktualnyGracz)) {
-            cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
-            break;
-        }
-        else if(!GM.czyZostalyRuchy()) {
-            cout << "Remis!" << endl;
-            break;
-        }
-    }
+    vsComputer = GM.menu();
     
 
+    if(vsComputer) {
+        while(true) {
+            // ruch gracza
+            GM.nastepnaTura();
+            cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
+            cin >> input;
+            while(wykonanoRuch != true) {
+                wykonanoRuch = GM.ruch(input);
+            }
+            wykonanoRuch = false;
+
+            GM.plansza->wyswietlPlansze();
+            if(GM.plansza->wygrana(GM.aktualnyGracz)) {
+                cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
+                break;
+            }
+            else if(!GM.czyZostalyRuchy()) {
+                cout << "Remis!" << endl;
+                break;
+            }
+
+            //ruch komputera
+            GM.nastepnaTura();
+            cout << "Ruch komputera " << GM.aktualnyGracz->znak << ".";
+            GM.ruch(GM.znajdzNajlepszyRuch());
+
+            GM.plansza->wyswietlPlansze();
+            if(GM.plansza->wygrana(GM.aktualnyGracz)) {
+                cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
+                break;
+            }
+            else if(!GM.czyZostalyRuchy()) {
+                cout << "Remis!" << endl;
+                break;
+            }
+        }
+    } else {
+        while(true) {
+            GM.nastepnaTura();
+            
+            cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
+            cin >> input;
+            while(wykonanoRuch != true) {
+                wykonanoRuch = GM.ruch(input);
+            }
+            wykonanoRuch = false;
+
+            GM.plansza->wyswietlPlansze();
+            if(GM.plansza->wygrana(GM.aktualnyGracz)) {
+                cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
+                break;
+            }
+            else if(!GM.czyZostalyRuchy()) {
+                cout << "Remis!" << endl;
+                break;
+            }
+        }
+    }
     
     cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
     system("pause");
