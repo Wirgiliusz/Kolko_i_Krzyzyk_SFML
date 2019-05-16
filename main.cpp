@@ -95,15 +95,15 @@ int main() {
     [ ] b. czyszczenie konsoli
     [x] c. kolory
 
-[ ] 5. Algorytm komputera:
-    -> naprawic: wybiera pola po kolei
+[x] 5. Algorytm komputera:
+    -> zbyt dlugie obliczenia dla 5x5
 
 [ ] 6. Grafika:
 
     NAPRAWIC:
         [x] a. algorytm wybiera pola po kolei (nie dziala)
         [x] b. czasem zle wyswietla gracza ktory wygral
-        [ ] c. dlugi czas obliczen dla 4x4:
+        [x] c. dlugi czas obliczen dla 4x4:
             -> dodac mape ktora przechowuje stan planszy (np string)
             -> na poczatku minimax zapisuje do mapy stan planszy
             -> porownuje czy juz taki tam jest
