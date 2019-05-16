@@ -13,6 +13,7 @@ class GameMaster {
     Gracz* aktualnyGracz;
     int wielkosc_planszy;
     int warunek_wygranej;
+    bool wyjscie = false;
 
     GameMaster();
     Plansza* stworzPlansze(int wielkosc_planszy, int warunek_wygranej);
@@ -25,5 +26,5 @@ class GameMaster {
     int minimax(int glebokosc, bool isMax);
     char znajdzNajlepszyRuch();
 
-    bool menu();
+    int menu();
 };

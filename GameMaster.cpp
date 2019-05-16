@@ -143,13 +143,15 @@ char GameMaster::znajdzNajlepszyRuch() {
     return najlepszyRuch;
 }
 
-bool GameMaster::menu() {
+int GameMaster::menu() {
     int wyborTrybuGry;
     int wyborWielkosciPlanszy;
     int wyborWarunkuWygranej;
-    cout << "~~ ~~ KOLKO I KRZYZYK ~~ ~~" << endl << endl;
+    cout << endl << " _____________________" << endl;
+    cout << "| ~ KOLKO I KRZYZYK ~ |" << endl << endl;
     cout << "1. Gracz vs Gracz" << endl;
     cout << "2. Gracz vs Komputer" << endl;
+    cout << "3. Wyjscie" << endl;
     cout << "Wybor: ";
     cin >> wyborTrybuGry;
 
@@ -170,11 +172,17 @@ bool GameMaster::menu() {
         cin >> wyborWielkosciPlanszy;
         break;
 
+        case 3:
+        cout << "Pa pa" << endl;
+        wyjscie = true;
+        break;
+
         default:
         cout << "Brak wybranej opcji!" << endl;
     }
 
-    switch(wyborWielkosciPlanszy) {
+    if(!wyjscie) {
+        switch(wyborWielkosciPlanszy) {
         case 1:
         wielkosc_planszy = 3;
         break;
@@ -186,44 +194,47 @@ bool GameMaster::menu() {
         break;
         default:
         cout << "Nie wybrano wielkosci planszy!" << endl;
+        }
+
+        cout << "Warunek wygranej:" << endl;
+        cout << "1. Jeden z rzedu (serio?)" << endl;
+        cout << "2. Dwa z rzedu" << endl;
+        cout << "3. Trzy z rzedu" << endl;
+        if(wielkosc_planszy>3)
+        cout << "4. Cztery z rzedu" << endl;
+        if(wielkosc_planszy>4)
+        cout << "5. Piec z rzedu" << endl;
+        cin >> wyborWarunkuWygranej;
+
+        switch(wyborWarunkuWygranej) {
+            case 1:
+            warunek_wygranej = 1;
+            break;
+            case 2:
+            warunek_wygranej = 2;
+            break;
+            case 3:
+            warunek_wygranej = 3;
+            break;
+            case 4:
+            warunek_wygranej = 4;
+            break;
+            case 5:
+            warunek_wygranej = 5;
+            break;
+            default:
+            cout << "Nie wybrano warunku wygranej!" << endl;
+        }
+
+        plansza = stworzPlansze(wielkosc_planszy, warunek_wygranej);
+        plansza->wyswietlPlansze();
+
+        if(wyborTrybuGry == 1) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
-
-    cout << "Warunek wygranej:" << endl;
-    cout << "1. Jeden z rzedu (serio?)" << endl;
-    cout << "2. Dwa z rzedu" << endl;
-    cout << "3. Trzy z rzedu" << endl;
-    if(wielkosc_planszy>3)
-    cout << "4. Cztery z rzedu" << endl;
-    if(wielkosc_planszy>4)
-    cout << "5. Piec z rzedu" << endl;
-    cin >> wyborWarunkuWygranej;
-
-    switch(wyborWarunkuWygranej) {
-        case 1:
-        warunek_wygranej = 1;
-        break;
-        case 2:
-        warunek_wygranej = 2;
-        break;
-        case 3:
-        warunek_wygranej = 3;
-        break;
-        case 4:
-        warunek_wygranej = 4;
-        break;
-        case 5:
-        warunek_wygranej = 5;
-        break;
-        default:
-        cout << "Nie wybrano warunku wygranej!" << endl;
-    }
-
-    plansza = stworzPlansze(wielkosc_planszy, warunek_wygranej);
-    plansza->wyswietlPlansze();
-
-    if(wyborTrybuGry == 1) {
-        return false;
-    } else {
-        return true;
-    }
+    
+    return -1;
 }
