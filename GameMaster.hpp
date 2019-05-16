@@ -2,7 +2,8 @@
 
 #include "Gracz.hpp"
 #include "Plansza.hpp"
-#include <vector>
+#include <map>
+#include <string>
 
 class GameMaster {
     public:
@@ -17,8 +18,9 @@ class GameMaster {
     void nastepnaTura();
     bool ruch(char numer_pola);
     
+    //std::map<std::string,int[]>* oldAnswers = new map<std::string,int[]>();  
     bool czyZostalyRuchy();
-    int ocen();
+    int ocen(int glebokosc);
     int minimax(int glebokosc, bool isMax);
     char znajdzNajlepszyRuch();
 };

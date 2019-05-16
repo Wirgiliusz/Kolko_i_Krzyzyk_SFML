@@ -45,28 +45,34 @@ bool GameMaster::czyZostalyRuchy() {
     return false;
 }
 
-int GameMaster::ocen() {
+int GameMaster::ocen(int glebokosc) {
     if(plansza->wygrana(graczO)) {
-        return +10;
+        return +10 - glebokosc;
     }
     else if(plansza->wygrana(graczX)) {
-        return -10;
+        return -10 + glebokosc;
     }
     return 0;
 }
 
 int GameMaster::minimax(int glebokosc, bool isMax) {
-    int wynik = ocen();
+    //std::string stateString ="";
 
-    if(wynik == 10) {
+    int wynik = ocen(glebokosc);
+
+    if(wynik == 10 - glebokosc) {
         return wynik;
     }
-    if(wynik == -10) {
+    if(wynik == -10 + glebokosc) {
         return wynik;
     }
     if(!czyZostalyRuchy()) {
         return 0;
     }
+    if(glebokosc > 1000) {
+        return 0;
+    }
+    //std::cout << "g: " << glebokosc << " ";
 
     if(isMax) {
         int najlepszy = -1000;
@@ -77,11 +83,12 @@ int GameMaster::minimax(int glebokosc, bool isMax) {
                     char backup;
                     backup = plansza->macierzPol[i][j]->stan;
                     graczO->wykonajRuch(plansza->macierzPol[i][j]);
-                    najlepszy = std::max(najlepszy, minimax(glebokosc-1, !isMax));
+                    najlepszy = std::max(najlepszy, minimax(glebokosc+1, !isMax));
                     plansza->macierzPol[i][j]->stan = backup;
                 }
             }
         }
+        //std::cout << "n: " << najlepszy << " ";
         return najlepszy;
     }
     else {
@@ -93,11 +100,12 @@ int GameMaster::minimax(int glebokosc, bool isMax) {
                     char backup;
                     backup = plansza->macierzPol[i][j]->stan;
                     graczX->wykonajRuch(plansza->macierzPol[i][j]);
-                    najlepszy = std::min(najlepszy, minimax(glebokosc-1, !isMax));
+                    najlepszy = std::min(najlepszy, minimax(glebokosc+1, !isMax));
                     plansza->macierzPol[i][j]->stan = backup;
                 }
             }
         }
+        //std::cout << "n: " << najlepszy << " ";
         return najlepszy;
     }
 }
@@ -114,6 +122,7 @@ char GameMaster::znajdzNajlepszyRuch() {
                 graczO->wykonajRuch(plansza->macierzPol[i][j]);
                 std::cout <<"raz ";
                 int wartoscRuchu = minimax(0, false);
+                std::cout <<"dwa ";
                 plansza->macierzPol[i][j]->stan = backup;
 
                 if(wartoscRuchu > najlepszaWartosc) {

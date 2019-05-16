@@ -9,12 +9,12 @@ int main() {
     GameMaster GM;
     char input;
     bool wykonanoRuch = false;
-    GM.plansza = GM.stworzPlansze(3,3);
+    GM.plansza = GM.stworzPlansze(4,4);
     GM.plansza->wyswietlPlansze();
 
     // --- Glowna petla gry --- //
     /*
-    while(!GM.plansza->wygrana()) {
+    while(true) {
         GM.nastepnaTura();
         
         cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
@@ -25,9 +25,15 @@ int main() {
         wykonanoRuch = false;
 
         GM.plansza->wyswietlPlansze();
-        cout << "Najlepszy ruch: " << GM.znajdzNajlepszyRuch() << endl;
+        if(GM.plansza->wygrana(GM.aktualnyGracz)) {
+            cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
+            break;
+        }
+        else if(!GM.czyZostalyRuchy()) {
+            cout << "Remis!" << endl;
+            break;
+        }
     }
-    cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
     */
     
     while(true) {
@@ -65,6 +71,7 @@ int main() {
             break;
         }
     }
+    
 
     
     cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
@@ -94,6 +101,12 @@ int main() {
 [ ] 6. Grafika:
 
     NAPRAWIC:
-        a. algorytm wybiera pola po kolei (nie dziala)
-        b. czasem zle wyswietla gracza ktory wygral
+        [x] a. algorytm wybiera pola po kolei (nie dziala)
+        [x] b. czasem zle wyswietla gracza ktory wygral
+        [ ] c. dlugi czas obliczen dla 4x4:
+            -> dodac mape ktora przechowuje stan planszy (np string)
+            -> na poczatku minimax zapisuje do mapy stan planszy
+            -> porownuje czy juz taki tam jest
+            -> jesli tak to bierze wynik z niego
+            -> na koncu minimax zapisuje do mapy stan planszy i wynik
 */
