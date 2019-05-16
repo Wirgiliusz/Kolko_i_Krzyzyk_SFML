@@ -11,12 +11,9 @@ int main() {
     bool vsComputer;
     bool wykonanoRuch = false;
 
-    //GM.plansza = GM.stworzPlansze(5,3);
-    //GM.plansza->wyswietlPlansze();
 
     vsComputer = GM.menu();
     
-
     if(vsComputer) {
         while(true) {
             // ruch gracza
@@ -75,7 +72,7 @@ int main() {
             }
         }
     }
-    
+
     cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
     system("pause");
     return 0;
