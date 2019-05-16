@@ -69,12 +69,12 @@ void Plansza::wyswietlPlansze() {
     cout << fg::reset;
 }
 
-bool Plansza::wygrana() {
+bool Plansza::wygrana(Gracz* gracz) {
     bool win = true;
     //przechodzi przez wszystkie pola
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int j=0; j<wielkosc_planszy; j++) {
-            if(!macierzPol[i][j]->isEmpty()) {  //jesli pole nie jest puste
+            if(macierzPol[i][j]->stan == gracz->znak) {  //jesli pole nie jest puste
                 if(j+warunek_wygranej-1 < wielkosc_planszy) {  //jesli kolejne dwa pola w prawo nie wychodza za plansze
                     for(int k=1; k<warunek_wygranej; k++) { //przechodzi przez kolejne pola
                         if(macierzPol[i][j]->stan != macierzPol[i][j+k]->stan) {    //jesli ktores nie jest takie samo jak poprzednie

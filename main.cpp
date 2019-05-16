@@ -30,13 +30,7 @@ int main() {
     cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
     */
     
-    while(!GM.plansza->wygrana()) {
-        GM.nastepnaTura();
-        
-        cout << "Ruch gracza " << GM.aktualnyGracz->znak << ".";
-        GM.ruch(GM.znajdzNajlepszyRuch());
-
-        GM.plansza->wyswietlPlansze();
+    while(true) {
         GM.nastepnaTura();
 
         cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
@@ -47,8 +41,23 @@ int main() {
         wykonanoRuch = false;
 
         GM.plansza->wyswietlPlansze();
+        if(GM.plansza->wygrana(GM.aktualnyGracz)) {
+            cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
+            break;
+        }
+
+        GM.nastepnaTura();
+        
+        cout << "Ruch gracza " << GM.aktualnyGracz->znak << ".";
+        GM.ruch(GM.znajdzNajlepszyRuch());
+
+        GM.plansza->wyswietlPlansze();
+        if(GM.plansza->wygrana(GM.aktualnyGracz)) {
+            cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
+            break;
+        }
     }
-    cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
+
     
     cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
     system("pause");

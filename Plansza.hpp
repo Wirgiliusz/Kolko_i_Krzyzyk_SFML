@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Pole.hpp"
+#include "Gracz.hpp"
 
 class Plansza {
     public:
@@ -10,5 +11,5 @@ class Plansza {
     
     Plansza(int wielkosc_planszy, int warunek_wygranej);
     void wyswietlPlansze();
-    bool wygrana();
+    bool wygrana(Gracz* gracz);
 };

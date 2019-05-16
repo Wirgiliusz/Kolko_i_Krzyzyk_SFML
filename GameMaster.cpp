@@ -46,13 +46,11 @@ bool GameMaster::czyZostalyRuchy() {
 }
 
 int GameMaster::ocen() {
-    if(plansza->wygrana()) {
-        if(aktualnyGracz == graczO) {
-            return +10;
-        } 
-        else if(aktualnyGracz == graczX) {
-            return -10;
-        }
+    if(plansza->wygrana(graczO)) {
+        return +10;
+    }
+    else if(plansza->wygrana(graczX)) {
+        return -10;
     }
     return 0;
 }
