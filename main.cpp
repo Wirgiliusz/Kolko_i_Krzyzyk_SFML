@@ -31,8 +31,8 @@ int main() {
     */
     
     while(true) {
+        // ruch gracza
         GM.nastepnaTura();
-
         cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
         cin >> input;
         while(wykonanoRuch != true) {
@@ -45,15 +45,23 @@ int main() {
             cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
             break;
         }
+        else if(!GM.czyZostalyRuchy()) {
+            cout << "Remis!" << endl;
+            break;
+        }
 
+        //ruch komputera
         GM.nastepnaTura();
-        
-        cout << "Ruch gracza " << GM.aktualnyGracz->znak << ".";
+        cout << "Ruch komputera " << GM.aktualnyGracz->znak << ".";
         GM.ruch(GM.znajdzNajlepszyRuch());
 
         GM.plansza->wyswietlPlansze();
         if(GM.plansza->wygrana(GM.aktualnyGracz)) {
             cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
+            break;
+        }
+        else if(!GM.czyZostalyRuchy()) {
+            cout << "Remis!" << endl;
             break;
         }
     }

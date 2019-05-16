@@ -21,9 +21,4 @@ class GameMaster {
     int ocen();
     int minimax(int glebokosc, bool isMax);
     char znajdzNajlepszyRuch();
-    
-    /*
-    std::vector<Pole*> pustePola();
-    int minimax();
-    */
 };
