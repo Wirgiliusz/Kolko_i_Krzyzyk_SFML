@@ -15,7 +15,7 @@
     - [x] a. input uzytkownika
     - [ ] b. czyszczenie konsoli
 	- [x] c. kolory
-	- [ ] d. menu
+	- [x] d. menu
 	
 - [x] 5. Algorytm komputera:
 	- zbyt dlugie obliczenia dla 5x5
