@@ -12,10 +12,12 @@
 	- [x] b. odpowiednie wyswietlenie planszy
 	
 - [ ] 4. Interfejs:
-    - [ ] a. input uzytkownika
+    - [x] a. input uzytkownika
     - [ ] b. czyszczenie konsoli
 	- [x] c. kolory
+	- [ ] d. menu
 	
-- [ ] 5. Algorytm komputera:
+- [x] 5. Algorytm komputera:
+	- zbyt dlugie obliczenia dla 5x5
 
 - [ ] 6. Grafika:
