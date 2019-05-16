@@ -2,7 +2,7 @@
 
 #include "Gracz.hpp"
 #include "Plansza.hpp"
-#include <map>
+#include <unordered_map>
 #include <string>
 
 class GameMaster {
@@ -18,7 +18,7 @@ class GameMaster {
     void nastepnaTura();
     bool ruch(char numer_pola);
     
-    //std::map<std::string,int[]>* oldAnswers = new map<std::string,int[]>();  
+    std::unordered_map<std::string,int> znaneWyniki;
     bool czyZostalyRuchy();
     int ocen(int glebokosc);
     int minimax(int glebokosc, bool isMax);

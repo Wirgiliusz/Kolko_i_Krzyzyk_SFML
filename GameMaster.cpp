@@ -56,7 +56,17 @@ int GameMaster::ocen(int glebokosc) {
 }
 
 int GameMaster::minimax(int glebokosc, bool isMax) {
-    //std::string stateString ="";
+    std::string stanPlanszy = "";
+    for(int i=0; i<wielkosc_planszy; i++) {
+        for(int j=0; j<wielkosc_planszy; j++) {
+            stanPlanszy += plansza->macierzPol[i][j]->stan;
+        }
+    }
+    auto szukaj = znaneWyniki.find(stanPlanszy);
+    if (szukaj != znaneWyniki.end()) {
+        return szukaj->second;
+    }
+   
 
     int wynik = ocen(glebokosc);
 
@@ -89,6 +99,7 @@ int GameMaster::minimax(int glebokosc, bool isMax) {
             }
         }
         //std::cout << "n: " << najlepszy << " ";
+        znaneWyniki.insert({stanPlanszy, najlepszy});
         return najlepszy;
     }
     else {
@@ -106,6 +117,7 @@ int GameMaster::minimax(int glebokosc, bool isMax) {
             }
         }
         //std::cout << "n: " << najlepszy << " ";
+        znaneWyniki.insert({stanPlanszy, najlepszy});
         return najlepszy;
     }
 }
@@ -120,9 +132,9 @@ char GameMaster::znajdzNajlepszyRuch() {
                 char backup;
                 backup = plansza->macierzPol[i][j]->stan;
                 graczO->wykonajRuch(plansza->macierzPol[i][j]);
-                std::cout <<"raz ";
+                //std::cout <<"raz ";
                 int wartoscRuchu = minimax(0, false);
-                std::cout <<"dwa ";
+                //std::cout <<"dwa ";
                 plansza->macierzPol[i][j]->stan = backup;
 
                 if(wartoscRuchu > najlepszaWartosc) {

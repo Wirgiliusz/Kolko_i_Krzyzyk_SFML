@@ -1,5 +1,5 @@
-#include "GameMaster.hpp"
 #include "rang.hpp"
+#include "GameMaster.hpp"
 #include <iostream>
 
 using namespace std;
@@ -9,7 +9,7 @@ int main() {
     GameMaster GM;
     char input;
     bool wykonanoRuch = false;
-    GM.plansza = GM.stworzPlansze(4,4);
+    GM.plansza = GM.stworzPlansze(4,3);
     GM.plansza->wyswietlPlansze();
 
     // --- Glowna petla gry --- //
