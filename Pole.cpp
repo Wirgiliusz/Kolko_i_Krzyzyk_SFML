@@ -2,8 +2,11 @@
 
 
 
-Pole::Pole(char stan) {
+Pole::Pole(char stan, int wielkosc, int posX, int posY) {
     this->stan = stan;
+    this->wielkosc = wielkosc;
+    this->posX = posX;
+    this->posY = posY;
 }
 
 Pole::Pole() {

@@ -114,8 +114,6 @@ int main() {
             break;
         }
         window.display();
-
-        
     }
     
  
