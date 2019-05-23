@@ -11,6 +11,7 @@ class GameMaster {
     Gracz* graczO;
     Plansza* plansza;
     Gracz* aktualnyGracz;
+    int tryb_gry;
     int wielkosc_planszy;
     int warunek_wygranej;
     bool wyjscie = false;

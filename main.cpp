@@ -43,11 +43,22 @@ int main() {
                 window.close();
 
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-                if(przyciskStart.getGlobalBounds().contains(mousePos.x,mousePos.y)) {
-                    std::cout << "klik";
+                if(okno == Start && przyciskStart.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "Start";
                     okno = WyborTrybuGry;
                 }
-            }
+
+                else if(okno == WyborTrybuGry && przyciskGvsG.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "Gracz vs Gracz";
+                    GM.tryb_gry = 0;
+                    okno = WyborWielkosciPlanszy;
+                }
+                else if(okno == WyborTrybuGry && przyciskGvsK.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "Gracz vs Komputer";
+                    GM.tryb_gry = 1;
+                    okno = WyborWielkosciPlanszy;
+                }
+            }  
         }
 
         window.clear();
