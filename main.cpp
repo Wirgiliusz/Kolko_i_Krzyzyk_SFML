@@ -61,20 +61,37 @@ int main() {
                 window.close();
 
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                // Start
                 if(okno == Start && przyciskStart.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "Start";
+                    std::cout << "Start ";
                     okno = WyborTrybuGry;
                 }
-
+                //Wybor trybu gry
                 else if(okno == WyborTrybuGry && przyciskGvsG.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "Gracz vs Gracz";
+                    std::cout << "Gracz vs Gracz ";
                     GM.tryb_gry = 0;
                     okno = WyborWielkosciPlanszy;
                 }
                 else if(okno == WyborTrybuGry && przyciskGvsK.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "Gracz vs Komputer";
+                    std::cout << "Gracz vs Komputer ";
                     GM.tryb_gry = 1;
                     okno = WyborWielkosciPlanszy;
+                }
+                //Wybor wielkosci planszy
+                else if(okno == WyborWielkosciPlanszy && przycisk3x3.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "3x3 ";
+                    GM.wielkosc_planszy = 3;
+                    okno = Gra;
+                }
+                else if(okno == WyborWielkosciPlanszy && przycisk4x4.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "4x4 ";
+                    GM.wielkosc_planszy = 4;
+                    okno = Gra;
+                }
+                else if(okno == WyborWielkosciPlanszy && przycisk5x5.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "5x5 ";
+                    GM.wielkosc_planszy = 5;
+                    okno = Gra;
                 }
             }  
         }
