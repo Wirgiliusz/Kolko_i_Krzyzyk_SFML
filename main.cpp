@@ -33,6 +33,24 @@ int main() {
     przyciskGvsK.setTexture(teksturaGvsK);
     przyciskGvsK.setPosition(450,100+300+100);
 
+    sf::Sprite przycisk3x3;
+    sf::Texture tekstura3x3;
+    tekstura3x3.loadFromFile("sprites\\3x3.png");
+    przycisk3x3.setTexture(tekstura3x3);
+    przycisk3x3.setPosition(460,75);
+
+    sf::Sprite przycisk4x4;
+    sf::Texture tekstura4x4;
+    tekstura4x4.loadFromFile("sprites\\4x4.png");
+    przycisk4x4.setTexture(tekstura4x4);
+    przycisk4x4.setPosition(460,75+200+75);
+
+    sf::Sprite przycisk5x5;
+    sf::Texture tekstura5x5;
+    tekstura5x5.loadFromFile("sprites\\5x5.png");
+    przycisk5x5.setTexture(tekstura5x5);
+    przycisk5x5.setPosition(460,75+200+75+200+75);
+
 
     while(window.isOpen()) {
         sf::Event event;
@@ -70,6 +88,12 @@ int main() {
             case WyborTrybuGry:
             window.draw(przyciskGvsG);
             window.draw(przyciskGvsK);
+            break;
+
+            case WyborWielkosciPlanszy:
+            window.draw(przycisk3x3);
+            window.draw(przycisk4x4);
+            window.draw(przycisk5x5);
             break;
         }
         window.display();
