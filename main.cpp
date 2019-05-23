@@ -1,83 +1,54 @@
 #include "rang.hpp"
 #include "GameMaster.hpp"
 #include <iostream>
-
-using namespace std;
+#include <SFML/Graphics.hpp>
 
 
 int main() {
     GameMaster GM;
-    char input;
-    int vsComputer;
-    bool wykonanoRuch = false;
+    //char input;
+    //int vsComputer;
+    //bool wykonanoRuch = false;
 
+    sf::RenderWindow window(sf::VideoMode(1600, 900), "Kolko i Krzyzyk");
+    
+    sf::Sprite przyciskStart;
+    sf::Texture teksturaStart;
+    teksturaStart.loadFromFile("sprites\\start.png");
+    przyciskStart.setTexture(teksturaStart);
+    przyciskStart.setPosition(450,300);
+    
+    /*
+    sf::RectangleShape przyciskStart;
+    przyciskStart.setOutlineColor(sf::Color(255,255,255));
+    przyciskStart.setOutlineThickness(5);
+    przyciskStart.setSize(sf::Vector2f(700,300));
+    przyciskStart.setPosition(450,300);
+    */
 
-    while(vsComputer != -1) {   // dopoki nie wybrano wyjscia
-        vsComputer = GM.menu();
+    while(window.isOpen()) {
+        sf::Event event;
+        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
 
-        if(vsComputer == 1) {   // gra z komputerem
-            while(true) {
-                // ruch gracza
-                GM.nastepnaTura();
-                cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
-                cin >> input;
-                while(wykonanoRuch != true) {
-                    wykonanoRuch = GM.ruch(input);
-                }
-                wykonanoRuch = false;
-
-                GM.plansza->wyswietlPlansze();
-                if(GM.plansza->wygrana(GM.aktualnyGracz)) {
-                    cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
-                    break;
-                }
-                else if(!GM.czyZostalyRuchy()) {
-                    cout << "Remis!" << endl;
-                    break;
-                }
-
-                //ruch komputera
-                GM.nastepnaTura();
-                cout << "Ruch komputera " << GM.aktualnyGracz->znak << ".";
-                GM.ruch(GM.znajdzNajlepszyRuch());
-
-                GM.plansza->wyswietlPlansze();
-                if(GM.plansza->wygrana(GM.aktualnyGracz)) {
-                    cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
-                    break;
-                }
-                else if(!GM.czyZostalyRuchy()) {
-                    cout << "Remis!" << endl;
-                    break;
-                }
-            }
-        } 
-        else if(vsComputer == 0) {  //gra z graczem
-            while(true) {
-                GM.nastepnaTura();
-                
-                cout << "Ruch gracza " << GM.aktualnyGracz->znak << ": ";
-                cin >> input;
-                while(wykonanoRuch != true) {
-                    wykonanoRuch = GM.ruch(input);
-                }
-                wykonanoRuch = false;
-
-                GM.plansza->wyswietlPlansze();
-                if(GM.plansza->wygrana(GM.aktualnyGracz)) {
-                    cout << "Wygral gracz: " << GM.aktualnyGracz->znak << endl;
-                    break;
-                }
-                else if(!GM.czyZostalyRuchy()) {
-                    cout << "Remis!" << endl;
-                    break;
+            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                if(przyciskStart.getGlobalBounds().contains(mousePos.x,mousePos.y)) {
+                    std::cout << "klik";
                 }
             }
         }
+
+        window.clear();
+        window.draw(przyciskStart);
+        window.display();
     }
+    
  
-    cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
-    system("pause");
+    std::cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
+    //system("pause");
     return 0;
 }
 
