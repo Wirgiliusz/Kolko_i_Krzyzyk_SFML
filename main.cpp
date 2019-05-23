@@ -9,6 +9,9 @@ int main() {
     //char input;
     //int vsComputer;
     //bool wykonanoRuch = false;
+    
+    enum Okno {Start, WyborTrybuGry, WyborWielkosciPlanszy, WyborWarunkuWygranej, Gra};
+    Okno okno = Start;
 
     sf::RenderWindow window(sf::VideoMode(1600, 900), "Kolko i Krzyzyk");
     
@@ -17,14 +20,19 @@ int main() {
     teksturaStart.loadFromFile("sprites\\start.png");
     przyciskStart.setTexture(teksturaStart);
     przyciskStart.setPosition(450,300);
-    
-    /*
-    sf::RectangleShape przyciskStart;
-    przyciskStart.setOutlineColor(sf::Color(255,255,255));
-    przyciskStart.setOutlineThickness(5);
-    przyciskStart.setSize(sf::Vector2f(700,300));
-    przyciskStart.setPosition(450,300);
-    */
+
+    sf::Sprite przyciskGvsG;
+    sf::Texture teksturaGvsG;
+    teksturaGvsG.loadFromFile("sprites\\graczvsgracz.png");
+    przyciskGvsG.setTexture(teksturaGvsG);
+    przyciskGvsG.setPosition(450,100);
+
+    sf::Sprite przyciskGvsK;
+    sf::Texture teksturaGvsK;
+    teksturaGvsK.loadFromFile("sprites\\graczvskomputer.png");
+    przyciskGvsK.setTexture(teksturaGvsK);
+    przyciskGvsK.setPosition(450,100+300+100);
+
 
     while(window.isOpen()) {
         sf::Event event;
@@ -37,13 +45,25 @@ int main() {
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 if(przyciskStart.getGlobalBounds().contains(mousePos.x,mousePos.y)) {
                     std::cout << "klik";
+                    okno = WyborTrybuGry;
                 }
             }
         }
 
         window.clear();
-        window.draw(przyciskStart);
+        switch(okno) {
+            case Start:
+            window.draw(przyciskStart);
+            break;
+
+            case WyborTrybuGry:
+            window.draw(przyciskGvsG);
+            window.draw(przyciskGvsK);
+            break;
+        }
         window.display();
+
+        
     }
     
  
