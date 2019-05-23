@@ -102,6 +102,8 @@ int main() {
     -> zbyt dlugie obliczenia dla 5x5
 
 [ ] 6. Grafika:
+    [ ] a. konfiguracja SFML
+        -> coby sie kompilowalo
 
     NAPRAWIC:
         [x] a. algorytm wybiera pola po kolei (nie dziala)
