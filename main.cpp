@@ -9,7 +9,7 @@ int main() {
     //char input;
     //int vsComputer;
     //bool wykonanoRuch = false;
-    
+
     enum Okno {Start, WyborTrybuGry, WyborWielkosciPlanszy, WyborWarunkuWygranej, Gra};
     Okno okno = Start;
 
@@ -93,8 +93,11 @@ int main() {
     -> zbyt dlugie obliczenia dla 5x5
 
 [ ] 6. Grafika:
-    [ ] a. konfiguracja SFML
+    [x] a. konfiguracja SFML
         -> coby sie kompilowalo
+    [ ] b. przejscie przez menu
+    [ ] c. wyswietlanie planszy
+    [ ] d. reakcja planszy
 
     NAPRAWIC:
         [x] a. algorytm wybiera pola po kolei (nie dziala)
