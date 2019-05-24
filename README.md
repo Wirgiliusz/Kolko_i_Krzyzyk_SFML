@@ -22,6 +22,7 @@
 
 - [ ] 6. Grafika:
 	- [x] a. konfiguracja SFML
-    - [ ] b. przejscie przez menu
+    - [x] b. przejscie przez menu
     - [x] c. wyswietlanie planszy
-    - [ ] d. reakcja planszy
+    - [x] d. reakcja planszy
+	- [ ] e. informacje o grze
