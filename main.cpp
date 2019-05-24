@@ -166,7 +166,12 @@ int main() {
                                         if (GM.plansza->wygrana(GM.aktualnyGracz)) {
                                             std::cout << "Koniec gry. Wygral: " << GM.aktualnyGracz->znak << std::endl;
                                             okno = KoniecGry;
-                                        } else {
+                                        } 
+                                        else if(!GM.czyZostalyRuchy()) {
+                                            std::cout << "Koniec gry. Remis!" << std::endl;
+                                            okno = KoniecGry;
+                                        }
+                                        else {
                                         GM.nastepnaTura();
                                         }
                                     }
