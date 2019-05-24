@@ -1,9 +1,10 @@
 #include "Plansza.hpp"
-#include "rang.hpp"
+//#include "rang.hpp"
+
 #include <iostream>
 
 using namespace std;
-using namespace rang;
+//using namespace rang;
 
 Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
     this->warunek_wygranej = warunek_wygranej;
@@ -21,50 +22,13 @@ Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
             macierzPol[i][j] = new Pole(' ',200,x,y);      //wypelnia macierz pustymi polami
             x += 200;
         }
+        x = 500;
         y += 200;
     }
 }
 
 void Plansza::wyswietlPlansze() {
-    bool tylkoRaz = false;
-    bool tylkoRaz2 = false;
-    cout << endl;
-    for(int i=0; i<wielkosc_planszy; i++) {
-        for(int k=0; k<wielkosc_planszy; k++) {
-            cout << fgB::yellow << "+-";
-        }
-        cout << "+" << fg::reset;
-        if(!tylkoRaz) {
-            cout << "\t Wymiar planszy: " << wielkosc_planszy << "x" << wielkosc_planszy;
-            tylkoRaz = true;
-        }
-        cout << endl;
-
-        for(int j=0; j<wielkosc_planszy; j++) {
-            cout << fgB::yellow << "|" << fg::reset;
-            if(macierzPol[i][j]->stan == 'X')
-                cout << fgB::red << style::bold;
-            else if(macierzPol[i][j]->stan == 'O')
-                cout << fgB::green << style::bold;
-            else {
-                cout << fg::gray << style::dim;
-            }
-            cout << macierzPol[i][j]->stan;
-            cout << fg::reset << style::reset;
-        }
-        cout << fgB::yellow << "|" << fg::reset ;
-        if(!tylkoRaz2) {
-            cout << "\t Warunek wygranej: " << warunek_wygranej << " z rzedu";
-            tylkoRaz2 = true;
-        }
-        cout << endl;
-    }
-
-    for(int k=0; k<wielkosc_planszy; k++) {
-        cout << fgB::yellow << "+-";
-    }
-    cout << "+" << endl;
-    cout << fg::reset;
+    
 }
 
 bool Plansza::wygrana(Gracz* gracz) {

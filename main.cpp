@@ -86,11 +86,13 @@ int main() {
                 else if(okno == WyborWielkosciPlanszy && przycisk4x4.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
                     std::cout << "4x4 ";
                     GM.wielkosc_planszy = 4;
+                    GM.stworzPlansze(GM.wielkosc_planszy,3);
                     okno = Gra;
                 }
                 else if(okno == WyborWielkosciPlanszy && przycisk5x5.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
                     std::cout << "5x5 ";
                     GM.wielkosc_planszy = 5;
+                    GM.stworzPlansze(GM.wielkosc_planszy,3);
                     okno = Gra;
                 }
             }  
@@ -111,6 +113,16 @@ int main() {
             window.draw(przycisk3x3);
             window.draw(przycisk4x4);
             window.draw(przycisk5x5);
+            break;
+
+            case Gra:
+            std::cout << "Gra";
+            
+            for(int i=0; i<GM.wielkosc_planszy; i++) {
+                for(int j=0; j<GM.wielkosc_planszy; j++) {
+                    window.draw(GM.plansza->macierzPol[i][j]->spritePola);
+                }
+            }
             break;
         }
         window.display();

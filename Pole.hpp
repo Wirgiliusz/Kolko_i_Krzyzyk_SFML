@@ -1,4 +1,5 @@
 #pragma once
+#include <SFML/Graphics.hpp>
 
 
 class Pole {
@@ -7,6 +8,9 @@ class Pole {
     int wielkosc;
     int posX;
     int posY;
+    sf::Sprite spritePola;
+    sf::Texture teksturaPola;
+
 
     Pole(char stan, int wielkosc, int posX, int posY);
     Pole();
