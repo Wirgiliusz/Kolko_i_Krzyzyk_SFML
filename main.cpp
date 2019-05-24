@@ -152,6 +152,18 @@ int main() {
                     GM.warunek_wygranej = 5;
                     okno = Gra;
                 }
+
+                //Gra
+                else if(okno == Gra) {
+                    for(int i=0; i<GM.wielkosc_planszy; i++) {
+                        for(int j=0; j<GM.wielkosc_planszy; j++) {
+                            if(GM.plansza->macierzPol[i][j]->spritePola.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                                GM.ruch(i, j);
+                                std::cout << "Ruch: " << i << " " << j << " ";
+                            }
+                        }
+                    }       
+                }
             }  
         }
 
@@ -181,7 +193,6 @@ int main() {
             break;
 
             case Gra:
-            //std::cout << "Gra";
             for(int i=0; i<GM.wielkosc_planszy; i++) {
                 for(int j=0; j<GM.wielkosc_planszy; j++) {
                     window.draw(GM.plansza->macierzPol[i][j]->spritePola);

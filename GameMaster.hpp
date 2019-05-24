@@ -19,7 +19,7 @@ class GameMaster {
     GameMaster();
     Plansza* stworzPlansze(int wielkosc_planszy, int warunek_wygranej);
     void nastepnaTura();
-    bool ruch(char numer_pola);
+    bool ruch(int i, int j);
     
     std::unordered_map<std::string,int> znaneWyniki;
     bool czyZostalyRuchy();

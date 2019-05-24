@@ -24,15 +24,8 @@ void GameMaster::nastepnaTura() {
         aktualnyGracz = graczX;
 }
 
-bool GameMaster::ruch(char numer_pola) {
-    for(int i=0; i<wielkosc_planszy; i++) {
-        for(int j=0; j<wielkosc_planszy; j++) {
-            if(plansza->macierzPol[i][j]->stan == numer_pola) {
-                return aktualnyGracz->wykonajRuch(plansza->macierzPol[i][j]);
-            }
-        }
-    }
-    return false;
+bool GameMaster::ruch(int i, int j) {
+    return aktualnyGracz->wykonajRuch(plansza->macierzPol[i][j]);
 }
 
 bool GameMaster::czyZostalyRuchy() {
