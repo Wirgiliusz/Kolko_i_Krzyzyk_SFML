@@ -9,7 +9,9 @@ class Pole {
     int posX;
     int posY;
     sf::Sprite spritePola;
-    sf::Texture teksturaPola;
+    sf::Texture teksturaPolaB;
+    sf::Texture teksturaPolaX;
+    sf::Texture teksturaPolaO;
 
 
     Pole(char stan, float wielkosc, int posX, int posY);

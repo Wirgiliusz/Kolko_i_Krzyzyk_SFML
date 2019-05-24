@@ -10,7 +10,7 @@ int main() {
     //int vsComputer;
     //bool wykonanoRuch = false;
 
-    enum Okno {Start, WyborTrybuGry, WyborWielkosciPlanszy, WyborWarunkuWygranej, Gra};
+    enum Okno {Start, WyborTrybuGry, WyborWielkosciPlanszy, WyborWarunkuWygranej, Gra, KoniecGry};
     Okno okno = Start;
 
     sf::RenderWindow window(sf::VideoMode(1600, 900), "Kolko i Krzyzyk");
@@ -93,63 +93,65 @@ int main() {
             if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 // Start
                 if(okno == Start && przyciskStart.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "Start ";
+                    std::cout << "Start" << std::endl;
                     okno = WyborTrybuGry;
                 }
                 //Wybor trybu gry
                 else if(okno == WyborTrybuGry && przyciskGvsG.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "Gracz vs Gracz ";
+                    std::cout << "Gracz vs Gracz" << std::endl;
                     GM.tryb_gry = 0;
                     okno = WyborWielkosciPlanszy;
                 }
                 else if(okno == WyborTrybuGry && przyciskGvsK.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "Gracz vs Komputer ";
+                    std::cout << "Gracz vs Komputer" << std::endl;
                     GM.tryb_gry = 1;
                     okno = WyborWielkosciPlanszy;
                 }
                 //Wybor wielkosci planszy
                 else if(okno == WyborWielkosciPlanszy && przycisk3x3.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "3x3 ";
+                    std::cout << "3x3" << std::endl;
                     GM.wielkosc_planszy = 3;
-                    GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,3);
                     okno = WyborWarunkuWygranej;
                 }
                 else if(okno == WyborWielkosciPlanszy && przycisk4x4.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "4x4 ";
+                    std::cout << "4x4" << std::endl;
                     GM.wielkosc_planszy = 4;
-                    GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,3);
                     okno = WyborWarunkuWygranej;
                 }
                 else if(GM.tryb_gry == 0 && okno == WyborWielkosciPlanszy && przycisk5x5.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "5x5 ";
+                    std::cout << "5x5" << std::endl;
                     GM.wielkosc_planszy = 5;
-                    GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,3);
                     okno = WyborWarunkuWygranej;
                 }
                 //Wybor warunku wygranej
                 else if(okno == WyborWarunkuWygranej && przycisk1zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "1 z rzedu ";
+                    std::cout << "1 z rzedu" << std::endl;
                     GM.warunek_wygranej = 1;
+                    GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,GM.warunek_wygranej);
                     okno = Gra;
                 }
                 else if(okno == WyborWarunkuWygranej && przycisk2zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "2 z rzedu ";
+                    std::cout << "2 z rzedu" << std::endl;
                     GM.warunek_wygranej = 2;
+                    GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,GM.warunek_wygranej);
                     okno = Gra;
                 }
                 else if(okno == WyborWarunkuWygranej && przycisk3zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "3 z rzedu ";
+                    std::cout << "3 z rzedu" << std::endl;
                     GM.warunek_wygranej = 3;
+                    GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,GM.warunek_wygranej);
                     okno = Gra;
                 }
                 else if(GM.wielkosc_planszy > 3 && okno == WyborWarunkuWygranej && przycisk4zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "4 z rzedu ";
+                    std::cout << "4 z rzedu" << std::endl;
                     GM.warunek_wygranej = 4;
+                    GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,GM.warunek_wygranej);
                     okno = Gra;
                 }
                 else if(GM.wielkosc_planszy > 4 && okno == WyborWarunkuWygranej && przycisk5zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                    std::cout << "5 z rzedu ";
+                    std::cout << "5 z rzedu" << std::endl;
                     GM.warunek_wygranej = 5;
+                    GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,GM.warunek_wygranej);
                     okno = Gra;
                 }
 
@@ -158,8 +160,15 @@ int main() {
                     for(int i=0; i<GM.wielkosc_planszy; i++) {
                         for(int j=0; j<GM.wielkosc_planszy; j++) {
                             if(GM.plansza->macierzPol[i][j]->spritePola.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                                GM.ruch(i, j);
-                                std::cout << "Ruch: " << i << " " << j << " ";
+                                if(GM.ruch(i, j)) {
+                                    std::cout << "Ruch[" << GM.aktualnyGracz->znak << "]: " << i << " " << j << std::endl;
+                                    if (GM.plansza->wygrana(GM.aktualnyGracz)) {
+                                        std::cout << "Koniec gry. Wygral: " << GM.aktualnyGracz->znak << std::endl;
+                                        okno = KoniecGry;
+                                    } else {
+                                        GM.nastepnaTura();
+                                    }
+                                }
                             }
                         }
                     }       
@@ -193,6 +202,14 @@ int main() {
             break;
 
             case Gra:
+            for(int i=0; i<GM.wielkosc_planszy; i++) {
+                for(int j=0; j<GM.wielkosc_planszy; j++) {
+                    window.draw(GM.plansza->macierzPol[i][j]->spritePola);
+                }
+            }
+            break;
+
+            case KoniecGry:
             for(int i=0; i<GM.wielkosc_planszy; i++) {
                 for(int j=0; j<GM.wielkosc_planszy; j++) {
                     window.draw(GM.plansza->macierzPol[i][j]->spritePola);
