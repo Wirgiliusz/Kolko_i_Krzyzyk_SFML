@@ -19,11 +19,11 @@ Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
 
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int j=0; j<wielkosc_planszy; j++) {
-            macierzPol[i][j] = new Pole(' ',200,x,y);      //wypelnia macierz pustymi polami
-            x += 200;
+            macierzPol[i][j] = new Pole(' ',600/wielkosc_planszy,x,y);      //wypelnia macierz pustymi polami
+            x += 600/wielkosc_planszy;
         }
         x = 500;
-        y += 200;
+        y += 600/wielkosc_planszy;
     }
 }
 

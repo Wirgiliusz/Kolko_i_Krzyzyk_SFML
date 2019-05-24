@@ -2,14 +2,14 @@
 
 
 
-Pole::Pole(char stan, int wielkosc, int posX, int posY) {
+Pole::Pole(char stan, float wielkosc, int posX, int posY) {
     this->stan = stan;
     this->wielkosc = wielkosc;
     this->posX = posX;
     this->posY = posY;
 
     this->teksturaPola.loadFromFile("sprites\\B.png");
-    this->spritePola.setScale(wielkosc/200,wielkosc/200);
+    this->spritePola.setScale(float(wielkosc/200),float(wielkosc/200));
     this->spritePola.setTexture(teksturaPola);
     this->spritePola.setPosition(posX,posY);
 }

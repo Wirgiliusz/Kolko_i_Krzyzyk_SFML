@@ -5,10 +5,10 @@
 using namespace std;
 
 GameMaster::GameMaster() {
-    this->wielkosc_planszy = 3;
+    //this->wielkosc_planszy = 3;
     graczX = new Gracz('X');
     graczO = new Gracz('O');
-    plansza = stworzPlansze(3, 3);
+    //plansza = stworzPlansze(3, 3);
     aktualnyGracz = graczO;
 }
 
