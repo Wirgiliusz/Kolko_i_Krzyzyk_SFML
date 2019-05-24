@@ -1,6 +1,6 @@
 # Kolko i Krzyzyk SFML
 
-![Text](https://puu.sh/DwpCA/43c44932f8.png "Game Screen")
+![Text](https://puu.sh/DwIlL/770094aef1.png "Game Screen")
 
 ## TODO
 - [x] 1. Mozliwosc zmiany wielkosci planszy
