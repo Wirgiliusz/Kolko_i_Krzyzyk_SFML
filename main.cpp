@@ -300,9 +300,10 @@ int main() {
 [ ] 6. Grafika:
     [x] a. konfiguracja SFML
         -> coby sie kompilowalo
-    [ ] b. przejscie przez menu
+    [x] b. przejscie przez menu
     [x] c. wyswietlanie planszy
-    [ ] d. reakcja planszy
+    [x] d. reakcja planszy
+    [ ] e. informacje o grze
 
     NAPRAWIC:
         [x] a. algorytm wybiera pola po kolei (nie dziala)
