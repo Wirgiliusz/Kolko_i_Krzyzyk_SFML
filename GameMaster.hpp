@@ -22,10 +22,11 @@ class GameMaster {
     bool ruch(int i, int j);
     
     std::unordered_map<std::string,int> znaneWyniki;
+    std::string najlepszyRuch[2];
     bool czyZostalyRuchy();
     int ocen(int glebokosc);
     int minimax(int glebokosc, bool isMax);
-    char znajdzNajlepszyRuch();
+    std::string znajdzNajlepszyRuch();
 
     int menu();
 };

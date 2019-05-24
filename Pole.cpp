@@ -29,6 +29,9 @@ void Pole::zmienStan(char znak) {
     else if(znak == 'O') {
         this->spritePola.setTexture(teksturaPolaO);
     }
+    else if(znak == ' ') {
+        this->spritePola.setTexture(teksturaPolaB);
+    }
 }
 
 bool Pole::isEmpty() {

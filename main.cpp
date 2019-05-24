@@ -156,21 +156,48 @@ int main() {
                 }
 
                 //Gra
-                else if(okno == Gra) {
-                    for(int i=0; i<GM.wielkosc_planszy; i++) {
-                        for(int j=0; j<GM.wielkosc_planszy; j++) {
-                            if(GM.plansza->macierzPol[i][j]->spritePola.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
-                                if(GM.ruch(i, j)) {
-                                    std::cout << "Ruch[" << GM.aktualnyGracz->znak << "]: " << i << " " << j << std::endl;
-                                    if (GM.plansza->wygrana(GM.aktualnyGracz)) {
-                                        std::cout << "Koniec gry. Wygral: " << GM.aktualnyGracz->znak << std::endl;
-                                        okno = KoniecGry;
-                                    } else {
+                if(okno == Gra) {
+                    if(GM.tryb_gry == 0 && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                        for(int i=0; i<GM.wielkosc_planszy; i++) {
+                            for(int j=0; j<GM.wielkosc_planszy; j++) {
+                                if(GM.plansza->macierzPol[i][j]->spritePola.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                                    if(GM.ruch(i, j)) {
+                                        std::cout << "Ruch[" << GM.aktualnyGracz->znak << "]: " << i << " " << j << std::endl;
+                                        if (GM.plansza->wygrana(GM.aktualnyGracz)) {
+                                            std::cout << "Koniec gry. Wygral: " << GM.aktualnyGracz->znak << std::endl;
+                                            okno = KoniecGry;
+                                        } else {
                                         GM.nastepnaTura();
+                                        }
                                     }
                                 }
                             }
                         }
+                    }
+                    if(GM.tryb_gry == 1) {
+                        if(GM.aktualnyGracz == GM.graczX && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                            for(int i=0; i<GM.wielkosc_planszy; i++) {
+                                for(int j=0; j<GM.wielkosc_planszy; j++) {
+                                    if(GM.plansza->macierzPol[i][j]->spritePola.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                                        if(GM.ruch(i, j)) {
+                                            std::cout << "Ruch[" << GM.aktualnyGracz->znak << "]: " << i << " " << j << std::endl;
+                                            if (GM.plansza->wygrana(GM.aktualnyGracz)) {
+                                                std::cout << "Koniec gry. Wygral: " << GM.aktualnyGracz->znak << std::endl;
+                                                okno = KoniecGry;
+                                            } 
+                                            else if(!GM.czyZostalyRuchy()) {
+                                                std::cout << "Koniec gry. Remis!" << std::endl;
+                                                okno = KoniecGry;
+                                            }
+                                            else {
+                                            GM.nastepnaTura();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
                     }       
                 }
             }  
@@ -218,6 +245,25 @@ int main() {
             break;
         }
         window.display();
+
+        if(GM.aktualnyGracz == GM.graczO && okno == Gra && GM.tryb_gry == 1) {
+            std::string ruchK = GM.znajdzNajlepszyRuch();
+            std::cout << "BOB: " << ruchK[0]-48 << "|" << ruchK[1]-'0' << std::endl;
+            if(GM.ruch(ruchK[0]-'0',ruchK[1]-'0')) {
+                std::cout << "Ruch[" << GM.aktualnyGracz->znak << "]: " << ruchK[0] << " " << ruchK[1] << std::endl;
+                if (GM.plansza->wygrana(GM.aktualnyGracz)) {
+                    std::cout << "Koniec gry. Wygral: " << GM.aktualnyGracz->znak << std::endl;
+                    okno = KoniecGry;
+                } 
+                else if(!GM.czyZostalyRuchy()) {
+                    std::cout << "Koniec gry. Remis!" << std::endl;
+                    okno = KoniecGry;
+                }
+                else {
+                GM.nastepnaTura();
+                }
+            }
+        }
     }
     
  

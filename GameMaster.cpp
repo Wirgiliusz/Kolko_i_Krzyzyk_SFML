@@ -9,7 +9,7 @@ GameMaster::GameMaster() {
     graczX = new Gracz('X');
     graczO = new Gracz('O');
     //plansza = stworzPlansze(3, 3);
-    aktualnyGracz = graczO;
+    aktualnyGracz = graczX;
 }
 
 Plansza* GameMaster::stworzPlansze(int wielkosc_planszy, int warunek_wygranej) {
@@ -87,7 +87,7 @@ int GameMaster::minimax(int glebokosc, bool isMax) {
                     backup = plansza->macierzPol[i][j]->stan;
                     graczO->wykonajRuch(plansza->macierzPol[i][j]);
                     najlepszy = std::max(najlepszy, minimax(glebokosc+1, !isMax));
-                    plansza->macierzPol[i][j]->stan = backup;
+                    plansza->macierzPol[i][j]->zmienStan(backup);
                 }
             }
         }
@@ -104,7 +104,7 @@ int GameMaster::minimax(int glebokosc, bool isMax) {
                     backup = plansza->macierzPol[i][j]->stan;
                     graczX->wykonajRuch(plansza->macierzPol[i][j]);
                     najlepszy = std::min(najlepszy, minimax(glebokosc+1, !isMax));
-                    plansza->macierzPol[i][j]->stan = backup;
+                    plansza->macierzPol[i][j]->zmienStan(backup);
                 }
             }
         }
@@ -113,9 +113,9 @@ int GameMaster::minimax(int glebokosc, bool isMax) {
     }
 }
 
-char GameMaster::znajdzNajlepszyRuch() {
+std::string GameMaster::znajdzNajlepszyRuch() {
     int najlepszaWartosc = -1000;
-    char najlepszyRuch;
+    std::string najlepszyRuch;
 
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int j=0; j<wielkosc_planszy; j++) {
@@ -124,10 +124,11 @@ char GameMaster::znajdzNajlepszyRuch() {
                 backup = plansza->macierzPol[i][j]->stan;
                 graczO->wykonajRuch(plansza->macierzPol[i][j]);
                 int wartoscRuchu = minimax(0, false);
-                plansza->macierzPol[i][j]->stan = backup;
+                plansza->macierzPol[i][j]->zmienStan(backup);
 
                 if(wartoscRuchu > najlepszaWartosc) {
-                    najlepszyRuch = plansza->macierzPol[i][j]->stan;
+                    najlepszyRuch = std::to_string(i);
+                    najlepszyRuch += std::to_string(j);
                     najlepszaWartosc = wartoscRuchu;
                 }
             }
