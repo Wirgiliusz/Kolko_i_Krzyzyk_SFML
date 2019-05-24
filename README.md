@@ -1,6 +1,6 @@
-# Kolko i Krzyzyk
+# Kolko i Krzyzyk SFML
 
-![Text](https://puu.sh/DszRf/e6a09dab69.png "Game Screen")
+![Text](https://puu.sh/DwpCA/43c44932f8.png "Game Screen")
 
 ## TODO
 - [x] 1. Mozliwosc zmiany wielkosci planszy
@@ -21,3 +21,7 @@
 	- zbyt dlugie obliczenia dla 5x5
 
 - [ ] 6. Grafika:
+	- [x] a. konfiguracja SFML
+    - [ ] b. przejscie przez menu
+    - [x] c. wyswietlanie planszy
+    - [ ] d. reakcja planszy
