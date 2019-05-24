@@ -51,6 +51,36 @@ int main() {
     przycisk5x5.setTexture(tekstura5x5);
     przycisk5x5.setPosition(460,75+200+75+200+75);
 
+    sf::Sprite przycisk1zrzedu;
+    sf::Texture tekstura1zrzedu;
+    tekstura1zrzedu.loadFromFile("sprites\\1zrzedu.png");
+    przycisk1zrzedu.setTexture(tekstura1zrzedu);
+    przycisk1zrzedu.setPosition(637,33);
+
+    sf::Sprite przycisk2zrzedu;
+    sf::Texture tekstura2zrzedu;
+    tekstura2zrzedu.loadFromFile("sprites\\2zrzedu.png");
+    przycisk2zrzedu.setTexture(tekstura2zrzedu);
+    przycisk2zrzedu.setPosition(637,33+140+33);
+
+    sf::Sprite przycisk3zrzedu;
+    sf::Texture tekstura3zrzedu;
+    tekstura3zrzedu.loadFromFile("sprites\\3zrzedu.png");
+    przycisk3zrzedu.setTexture(tekstura3zrzedu);
+    przycisk3zrzedu.setPosition(637,33+140+33+140+33);
+
+    sf::Sprite przycisk4zrzedu;
+    sf::Texture tekstura4zrzedu;
+    tekstura4zrzedu.loadFromFile("sprites\\4zrzedu.png");
+    przycisk4zrzedu.setTexture(tekstura4zrzedu);
+    przycisk4zrzedu.setPosition(637,33+140+33+140+33+140+33);
+
+    sf::Sprite przycisk5zrzedu;
+    sf::Texture tekstura5zrzedu;
+    tekstura5zrzedu.loadFromFile("sprites\\5zrzedu.png");
+    przycisk5zrzedu.setTexture(tekstura5zrzedu);
+    przycisk5zrzedu.setPosition(637,33+140+33+140+33+140+33+140+33);
+
 
     while(window.isOpen()) {
         sf::Event event;
@@ -82,18 +112,44 @@ int main() {
                     std::cout << "3x3 ";
                     GM.wielkosc_planszy = 3;
                     GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,3);
-                    okno = Gra;
+                    okno = WyborWarunkuWygranej;
                 }
                 else if(okno == WyborWielkosciPlanszy && przycisk4x4.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
                     std::cout << "4x4 ";
                     GM.wielkosc_planszy = 4;
                     GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,3);
-                    okno = Gra;
+                    okno = WyborWarunkuWygranej;
                 }
-                else if(okno == WyborWielkosciPlanszy && przycisk5x5.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                else if(GM.tryb_gry == 0 && okno == WyborWielkosciPlanszy && przycisk5x5.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
                     std::cout << "5x5 ";
                     GM.wielkosc_planszy = 5;
                     GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,3);
+                    okno = WyborWarunkuWygranej;
+                }
+                //Wybor warunku wygranej
+                else if(okno == WyborWarunkuWygranej && przycisk1zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "1 z rzedu ";
+                    GM.warunek_wygranej = 1;
+                    okno = Gra;
+                }
+                else if(okno == WyborWarunkuWygranej && przycisk2zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "2 z rzedu ";
+                    GM.warunek_wygranej = 2;
+                    okno = Gra;
+                }
+                else if(okno == WyborWarunkuWygranej && przycisk3zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "3 z rzedu ";
+                    GM.warunek_wygranej = 3;
+                    okno = Gra;
+                }
+                else if(GM.wielkosc_planszy > 3 && okno == WyborWarunkuWygranej && przycisk4zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "4 z rzedu ";
+                    GM.warunek_wygranej = 4;
+                    okno = Gra;
+                }
+                else if(GM.wielkosc_planszy > 4 && okno == WyborWarunkuWygranej && przycisk5zrzedu.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "5 z rzedu ";
+                    GM.warunek_wygranej = 5;
                     okno = Gra;
                 }
             }  
@@ -114,6 +170,14 @@ int main() {
             window.draw(przycisk3x3);
             window.draw(przycisk4x4);
             window.draw(przycisk5x5);
+            break;
+
+            case WyborWarunkuWygranej:
+            window.draw(przycisk1zrzedu);
+            window.draw(przycisk2zrzedu);
+            window.draw(przycisk3zrzedu);
+            window.draw(przycisk4zrzedu);
+            window.draw(przycisk5zrzedu);
             break;
 
             case Gra:
