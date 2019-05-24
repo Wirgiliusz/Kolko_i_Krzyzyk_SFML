@@ -158,7 +158,7 @@ int main() {
     [x] a. konfiguracja SFML
         -> coby sie kompilowalo
     [ ] b. przejscie przez menu
-    [ ] c. wyswietlanie planszy
+    [x] c. wyswietlanie planszy
     [ ] d. reakcja planszy
 
     NAPRAWIC:
