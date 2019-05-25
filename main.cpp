@@ -6,9 +6,6 @@
 
 int main() {
     GameMaster GM;
-    //char input;
-    //int vsComputer;
-    //bool wykonanoRuch = false;
 
     enum Okno {Start, WyborTrybuGry, WyborWielkosciPlanszy, WyborWarunkuWygranej, Gra, KoniecGry};
     Okno okno = Start;
@@ -309,8 +306,8 @@ int main() {
 [x] 2. Sprawdzanie wygranej dla roznych warunkow wygranej
 
 [x] 3. Latwiejsze wybieranie pola do postawienia znaku:
-        [x] a. jako cyfra 1-9 (jednak litery a-z)
-        [x] b. odpowiednie wyswietlenie planszy
+    [x] a. jako cyfra 1-9 (jednak litery a-z)
+    [x] b. odpowiednie wyswietlenie planszy
 
 [ ] 4. Interfejs:
     [x] a. input uzytkownika
