@@ -34,79 +34,64 @@ int main() {
     tekstWielkoscPlanszy.setFillColor(sf::Color::White);
     tekstWarunekWygranej.setFillColor(sf::Color::White);
 
-    sf::Sprite przyciskStart;
-    sf::Texture teksturaStart;
+    sf::Sprite przyciskStart, przyciskGvsG, przyciskGvsK;
+    sf::Texture teksturaStart, teksturaGvsG, teksturaGvsK;
     teksturaStart.loadFromFile("sprites\\start.png");
     przyciskStart.setTexture(teksturaStart);
     przyciskStart.setPosition(450,300);
 
-    sf::Sprite przyciskGvsG;
-    sf::Texture teksturaGvsG;
     teksturaGvsG.loadFromFile("sprites\\graczvsgracz.png");
     przyciskGvsG.setTexture(teksturaGvsG);
     przyciskGvsG.setPosition(450,100);
 
-    sf::Sprite przyciskGvsK;
-    sf::Texture teksturaGvsK;
     teksturaGvsK.loadFromFile("sprites\\graczvskomputer.png");
     przyciskGvsK.setTexture(teksturaGvsK);
     przyciskGvsK.setPosition(450,100+300+100);
 
-    sf::Sprite przycisk3x3;
-    sf::Texture tekstura3x3;
+    sf::Sprite przycisk3x3, przycisk4x4, przycisk5x5;
+    sf::Texture tekstura3x3, tekstura4x4, tekstura5x5;
     tekstura3x3.loadFromFile("sprites\\3x3.png");
     przycisk3x3.setTexture(tekstura3x3);
     przycisk3x3.setPosition(460,75);
 
-    sf::Sprite przycisk4x4;
-    sf::Texture tekstura4x4;
     tekstura4x4.loadFromFile("sprites\\4x4.png");
     przycisk4x4.setTexture(tekstura4x4);
     przycisk4x4.setPosition(460,75+200+75);
 
-    sf::Sprite przycisk5x5;
-    sf::Texture tekstura5x5;
     tekstura5x5.loadFromFile("sprites\\5x5.png");
     przycisk5x5.setTexture(tekstura5x5);
     przycisk5x5.setPosition(460,75+200+75+200+75);
 
-    sf::Sprite przycisk1zrzedu;
-    sf::Texture tekstura1zrzedu;
+    sf::Sprite przycisk1zrzedu, przycisk2zrzedu, przycisk3zrzedu, przycisk4zrzedu, przycisk5zrzedu;
+    sf::Texture tekstura1zrzedu, tekstura2zrzedu, tekstura3zrzedu, tekstura4zrzedu, tekstura5zrzedu;
     tekstura1zrzedu.loadFromFile("sprites\\1zrzedu.png");
     przycisk1zrzedu.setTexture(tekstura1zrzedu);
     przycisk1zrzedu.setPosition(637,33);
 
-    sf::Sprite przycisk2zrzedu;
-    sf::Texture tekstura2zrzedu;
     tekstura2zrzedu.loadFromFile("sprites\\2zrzedu.png");
     przycisk2zrzedu.setTexture(tekstura2zrzedu);
     przycisk2zrzedu.setPosition(637,33+140+33);
 
-    sf::Sprite przycisk3zrzedu;
-    sf::Texture tekstura3zrzedu;
     tekstura3zrzedu.loadFromFile("sprites\\3zrzedu.png");
     przycisk3zrzedu.setTexture(tekstura3zrzedu);
     przycisk3zrzedu.setPosition(637,33+140+33+140+33);
 
-    sf::Sprite przycisk4zrzedu;
-    sf::Texture tekstura4zrzedu;
     tekstura4zrzedu.loadFromFile("sprites\\4zrzedu.png");
     przycisk4zrzedu.setTexture(tekstura4zrzedu);
     przycisk4zrzedu.setPosition(637,33+140+33+140+33+140+33);
 
-    sf::Sprite przycisk5zrzedu;
-    sf::Texture tekstura5zrzedu;
     tekstura5zrzedu.loadFromFile("sprites\\5zrzedu.png");
     przycisk5zrzedu.setTexture(tekstura5zrzedu);
     przycisk5zrzedu.setPosition(637,33+140+33+140+33+140+33+140+33);
 
-
+   
     while(window.isOpen()) {
         sf::Event event;
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+
         float elapsed = clock.restart().asSeconds();
         czas += elapsed;
-        //std::cout << czas << std::endl;
+
         if(GM.tryb_gry == 0) {
             tekstTrybGry.setString("Tryb gry:\n\tGracz\n\t  vs\n\tGracz");
         } 
@@ -247,8 +232,7 @@ int main() {
                                     }
                                 }
                             }
-                        }
-                        
+                        } 
                     }       
                 }
             }  
