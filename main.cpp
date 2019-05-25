@@ -28,8 +28,8 @@ int main() {
     tekstWarunekWygranej.setCharacterSize(50);
 
     tekstTrybGry.setPosition(sf::Vector2f(450+700,150));
-    tekstWielkoscPlanszy.setPosition(sf::Vector2f(450+700,300));
-    tekstWarunekWygranej.setPosition(sf::Vector2f(450+700,500));
+    tekstWielkoscPlanszy.setPosition(sf::Vector2f(450+700,400));
+    tekstWarunekWygranej.setPosition(sf::Vector2f(450+700,600));
 
     tekstTrybGry.setFillColor(sf::Color::White);
     tekstWielkoscPlanszy.setFillColor(sf::Color::White);
@@ -108,7 +108,12 @@ int main() {
         float elapsed = clock.restart().asSeconds();
         czas += elapsed;
         //std::cout << czas << std::endl;
-        tekstTrybGry.setString("Tryb gry:\n\t" + std::to_string(GM.tryb_gry));
+        if(GM.tryb_gry == 0) {
+            tekstTrybGry.setString("Tryb gry:\n\tGracz\n\t  vs\n\tGracz");
+        } 
+        else {
+            tekstTrybGry.setString("Tryb gry:\n\tGracz\n\t\t  vs\n\tKomputer");
+        }
         tekstWielkoscPlanszy.setString("Wielkosc\n\tplanszy:\n\t\t" + std::to_string(GM.wielkosc_planszy) + " x " + std::to_string(GM.wielkosc_planszy));
         tekstWarunekWygranej.setString("Warunek\n\twygranej:\n\t\t" + std::to_string(GM.warunek_wygranej) + " z rzedu");
 
