@@ -16,6 +16,25 @@ int main() {
     float czas = 0;
     const float DELAY = 0.1;
     
+    sf::Text tekstTrybGry, tekstWielkoscPlanszy, tekstWarunekWygranej;
+    sf::Font czcionka;
+    czcionka.loadFromFile("fonts\\Market_Deco.ttf");
+    tekstTrybGry.setFont(czcionka);
+    tekstWielkoscPlanszy.setFont(czcionka);
+    tekstWarunekWygranej.setFont(czcionka);
+
+    tekstTrybGry.setCharacterSize(50);
+    tekstWielkoscPlanszy.setCharacterSize(50);
+    tekstWarunekWygranej.setCharacterSize(50);
+
+    tekstTrybGry.setPosition(sf::Vector2f(450+700,150));
+    tekstWielkoscPlanszy.setPosition(sf::Vector2f(450+700,300));
+    tekstWarunekWygranej.setPosition(sf::Vector2f(450+700,500));
+
+    tekstTrybGry.setFillColor(sf::Color::White);
+    tekstWielkoscPlanszy.setFillColor(sf::Color::White);
+    tekstWarunekWygranej.setFillColor(sf::Color::White);
+
     sf::Sprite przyciskStart;
     sf::Texture teksturaStart;
     teksturaStart.loadFromFile("sprites\\start.png");
@@ -89,6 +108,9 @@ int main() {
         float elapsed = clock.restart().asSeconds();
         czas += elapsed;
         //std::cout << czas << std::endl;
+        tekstTrybGry.setString("Tryb gry:\n\t" + std::to_string(GM.tryb_gry));
+        tekstWielkoscPlanszy.setString("Wielkosc\n\tplanszy:\n\t\t" + std::to_string(GM.wielkosc_planszy) + " x " + std::to_string(GM.wielkosc_planszy));
+        tekstWarunekWygranej.setString("Warunek\n\twygranej:\n\t\t" + std::to_string(GM.warunek_wygranej) + " z rzedu");
 
         while (window.pollEvent(event))
         {
@@ -240,6 +262,7 @@ int main() {
             break;
 
             case WyborWielkosciPlanszy:
+                window.draw(tekstTrybGry);
                 window.draw(przycisk3x3);
                 window.draw(przycisk4x4);
                 window.draw(przycisk5x5);
@@ -247,6 +270,8 @@ int main() {
             break;
 
             case WyborWarunkuWygranej:
+                window.draw(tekstTrybGry);
+                window.draw(tekstWielkoscPlanszy);
                 window.draw(przycisk1zrzedu);
                 window.draw(przycisk2zrzedu);
                 window.draw(przycisk3zrzedu);
@@ -255,6 +280,9 @@ int main() {
             break;
 
             case Gra:
+                window.draw(tekstTrybGry);
+                window.draw(tekstWielkoscPlanszy);
+                window.draw(tekstWarunekWygranej);
                 for(int i=0; i<GM.wielkosc_planszy; i++) {
                     for(int j=0; j<GM.wielkosc_planszy; j++) {
                         window.draw(GM.plansza->macierzPol[i][j]->spritePola);
@@ -263,6 +291,9 @@ int main() {
             break;
 
             case KoniecGry:
+                window.draw(tekstTrybGry);
+                window.draw(tekstWielkoscPlanszy);
+                window.draw(tekstWarunekWygranej);
                 for(int i=0; i<GM.wielkosc_planszy; i++) {
                     for(int j=0; j<GM.wielkosc_planszy; j++) {
                         window.draw(GM.plansza->macierzPol[i][j]->spritePola);
