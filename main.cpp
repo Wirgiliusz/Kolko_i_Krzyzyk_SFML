@@ -340,7 +340,7 @@ int main() {
     [x] c. wyswietlanie planszy
     [x] d. reakcja planszy
     [x] e. informacje o grze
-    [ ] d. end game screen
+    [ ] f. end game screen
 
     NAPRAWIC:
         [x] a. algorytm wybiera pola po kolei (nie dziala)
