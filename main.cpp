@@ -1,4 +1,3 @@
-#include "rang.hpp"
 #include "GameMaster.hpp"
 #include <iostream>
 #include <SFML/Graphics.hpp>
@@ -327,10 +326,7 @@ int main() {
             }
         }
     }
-    
- 
-    std::cout << rang::style::reset << rang::fg::reset << rang::bg::reset;
-    //system("pause");
+
     return 0;
 }
 
@@ -345,22 +341,21 @@ int main() {
     [x] a. jako cyfra 1-9 (jednak litery a-z)
     [x] b. odpowiednie wyswietlenie planszy
 
-[ ] 4. Interfejs:
+[x] 4. Interfejs:
     [x] a. input uzytkownika
-    [ ] b. czyszczenie konsoli
-    [x] c. kolory
-    [x] d. menu
+    [x] b. kolory
+    [x] c. menu
 
 [x] 5. Algorytm komputera:
     -> zbyt dlugie obliczenia dla 5x5
 
-[ ] 6. Grafika:
+[x] 6. Grafika:
     [x] a. konfiguracja SFML
         -> coby sie kompilowalo
     [x] b. przejscie przez menu
     [x] c. wyswietlanie planszy
     [x] d. reakcja planszy
-    [ ] e. informacje o grze
+    [x] e. informacje o grze
 
     NAPRAWIC:
         [x] a. algorytm wybiera pola po kolei (nie dziala)
