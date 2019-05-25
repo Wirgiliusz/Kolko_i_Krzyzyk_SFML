@@ -11,11 +11,10 @@
 	- [x] a. jako cyfra 1-9 (jednak litery a-z)
 	- [x] b. odpowiednie wyswietlenie planszy
 	
-- [ ] 4. Interfejs:
+- [x] 4. Interfejs:
     - [x] a. input uzytkownika
-    - [ ] b. czyszczenie konsoli
-	- [x] c. kolory
-	- [x] d. menu
+	- [x] b. kolory
+	- [x] c. menu
 	
 - [x] 5. Algorytm komputera:
 	- zbyt dlugie obliczenia dla 5x5
@@ -25,4 +24,5 @@
     - [x] b. przejscie przez menu
     - [x] c. wyswietlanie planszy
     - [x] d. reakcja planszy
-	- [ ] e. informacje o grze
+	- [x] e. informacje o grze
+	- [ ] f. end game screen
