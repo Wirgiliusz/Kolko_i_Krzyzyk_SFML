@@ -399,7 +399,7 @@ int main() {
 [x] 5. Algorytm komputera:
     -> zbyt dlugie obliczenia dla 5x5
 
-[ ] 6. Grafika:
+[x] 6. Grafika:
     [x] a. konfiguracja SFML
         -> coby sie kompilowalo
     [x] b. przejscie przez menu
@@ -408,7 +408,7 @@ int main() {
     [x] e. informacje o grze
     [x] f. end game screen
     [x] g. restart gry
-    [ ] h. kursor
+    [x] h. kursor
 
     NAPRAWIC:
         [x] a. algorytm wybiera pola po kolei (nie dziala)
