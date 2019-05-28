@@ -9,8 +9,8 @@ Pole::Pole(char stan, float wielkosc, int posX, int posY) {
     this->posY = posY;
 
     this->teksturaPolaB.loadFromFile("sprites\\B.png");
-    this->teksturaPolaX.loadFromFile("sprites\\X.png");
-    this->teksturaPolaO.loadFromFile("sprites\\O.png");
+    this->teksturaPolaX.loadFromFile("sprites\\X2.png");
+    this->teksturaPolaO.loadFromFile("sprites\\O2.png");
 
     this->spritePola.setScale(float(wielkosc/200),float(wielkosc/200));
     this->spritePola.setTexture(teksturaPolaB);
