@@ -1,6 +1,6 @@
 # Kolko i Krzyzyk SFML
 
-![Text](https://puu.sh/DxbZB/80b07e79e1.png "Game Screen")
+![Text](https://puu.sh/DycZU/b6c3d8e97a.png "Game Screen")
 
 ## TODO
 - [x] 1. Mozliwosc zmiany wielkosci planszy
@@ -19,10 +19,15 @@
 - [x] 5. Algorytm komputera:
 	- zbyt dlugie obliczenia dla 5x5
 
-- [ ] 6. Grafika:
+- [x] 6. Grafika:
 	- [x] a. konfiguracja SFML
     - [x] b. przejscie przez menu
     - [x] c. wyswietlanie planszy
     - [x] d. reakcja planszy
 	- [x] e. informacje o grze
-	- [ ] f. end game screen
+	- [x] f. end game screen
+	- [x] g. restart gry
+    - [x] h. kursor
+
+- [ ] 7. Ogarnac maina()
+	
