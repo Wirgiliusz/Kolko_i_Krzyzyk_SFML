@@ -14,6 +14,8 @@ int main() {
     window.setFramerateLimit(60);
     float czas = 0;
     const float DELAY = 0.1;
+
+    window.setMouseCursorVisible(false);
     
     sf::Text tekstTrybGry, tekstWielkoscPlanszy, tekstWarunekWygranej, tekstKoniecGry;
     sf::Font czcionka;
@@ -36,6 +38,12 @@ int main() {
     tekstTrybGry.setFillColor(sf::Color::Red);
     tekstWielkoscPlanszy.setFillColor(sf::Color::Green);
     tekstWarunekWygranej.setFillColor(sf::Color::Blue);
+
+    sf::Sprite kursor;
+    sf::Texture teksturaKursorX, teksturaKursorO;
+    teksturaKursorX.loadFromFile("sprites\\Xkursor2.png");
+    teksturaKursorO.loadFromFile("sprites\\Okursor2.png");
+    kursor.setTexture(teksturaKursorX);
 
     sf::Sprite przyciskStart, przyciskGvsG, przyciskGvsK;
     sf::Texture teksturaStart, teksturaGvsG, teksturaGvsK;
@@ -100,6 +108,14 @@ int main() {
 
         float elapsed = clock.restart().asSeconds();
         czas += elapsed;
+
+        kursor.setPosition(mousePos.x-15,mousePos.y-15);
+        if(GM.aktualnyGracz == GM.graczX) {
+            kursor.setTexture(teksturaKursorX);
+        }
+        else if (GM.aktualnyGracz == GM.graczO) {
+            kursor.setTexture(teksturaKursorO);
+        }
 
         if(GM.tryb_gry == 0) {
             tekstTrybGry.setString("Tryb gry:\n\tGracz\n\t  vs\n\tGracz");
@@ -328,6 +344,7 @@ int main() {
                 }
             break;
         }
+        window.draw(kursor);
         window.display();
 
         if(GM.aktualnyGracz == GM.graczO && okno == Gra && GM.tryb_gry == 1) {
