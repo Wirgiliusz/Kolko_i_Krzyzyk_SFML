@@ -31,7 +31,7 @@ int main() {
     tekstTrybGry.setPosition(sf::Vector2f(450+700,150));
     tekstWielkoscPlanszy.setPosition(sf::Vector2f(450+700,400));
     tekstWarunekWygranej.setPosition(sf::Vector2f(450+700,600));
-    tekstKoniecGry.setPosition(sf::Vector2f(20,400)); 
+    tekstKoniecGry.setPosition(sf::Vector2f(20,300)); 
 
     tekstTrybGry.setFillColor(sf::Color::Red);
     tekstWielkoscPlanszy.setFillColor(sf::Color::Green);
@@ -86,6 +86,12 @@ int main() {
     tekstura5zrzedu.loadFromFile("sprites\\5zrzedu.png");
     przycisk5zrzedu.setTexture(tekstura5zrzedu);
     przycisk5zrzedu.setPosition(637,33+140+33+140+33+140+33+140+33);
+
+    sf::Sprite przyciskOdnowa;
+    sf::Texture teksturaOdnowa;
+    teksturaOdnowa.loadFromFile("sprites\\odnowa.png");
+    przyciskOdnowa.setTexture(teksturaOdnowa);
+    przyciskOdnowa.setPosition(87,500);
 
    
     while(window.isOpen()) {
@@ -183,6 +189,11 @@ int main() {
                     GM.plansza = GM.stworzPlansze(GM.wielkosc_planszy,GM.warunek_wygranej);
                     czas = 0;
                     okno = Gra;
+                }
+                else if(czas > DELAY && okno == KoniecGry && przyciskOdnowa.getGlobalBounds().contains(mousePos.x, mousePos.y)) {
+                    std::cout << "Restart" << std::endl;
+                    czas = 0;
+                    okno = Start;
                 }
 
                 //Gra
@@ -309,6 +320,7 @@ int main() {
                 window.draw(tekstWielkoscPlanszy);
                 window.draw(tekstWarunekWygranej);
                 window.draw(tekstKoniecGry);
+                window.draw(przyciskOdnowa);
                 for(int i=0; i<GM.wielkosc_planszy; i++) {
                     for(int j=0; j<GM.wielkosc_planszy; j++) {
                         window.draw(GM.plansza->macierzPol[i][j]->spritePola);
@@ -378,7 +390,7 @@ int main() {
     [x] d. reakcja planszy
     [x] e. informacje o grze
     [x] f. end game screen
-    [ ] g. restart gry
+    [x] g. restart gry
     [ ] h. kursor
 
     NAPRAWIC:
