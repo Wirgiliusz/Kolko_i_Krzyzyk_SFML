@@ -379,6 +379,7 @@ int main() {
     [x] e. informacje o grze
     [x] f. end game screen
     [ ] g. restart gry
+    [ ] h. kursor
 
     NAPRAWIC:
         [x] a. algorytm wybiera pola po kolei (nie dziala)
