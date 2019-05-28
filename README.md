@@ -25,4 +25,6 @@
     - [x] c. wyswietlanie planszy
     - [x] d. reakcja planszy
 	- [x] e. informacje o grze
-	- [ ] f. end game screen
+	- [x] f. end game screen
+	- [ ] g. restart gry
+    - [ ] h. kursor
