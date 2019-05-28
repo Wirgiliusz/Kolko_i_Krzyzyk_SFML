@@ -15,24 +15,27 @@ int main() {
     float czas = 0;
     const float DELAY = 0.1;
     
-    sf::Text tekstTrybGry, tekstWielkoscPlanszy, tekstWarunekWygranej;
+    sf::Text tekstTrybGry, tekstWielkoscPlanszy, tekstWarunekWygranej, tekstKoniecGry;
     sf::Font czcionka;
     czcionka.loadFromFile("fonts\\Market_Deco.ttf");
     tekstTrybGry.setFont(czcionka);
     tekstWielkoscPlanszy.setFont(czcionka);
     tekstWarunekWygranej.setFont(czcionka);
+    tekstKoniecGry.setFont(czcionka);
 
     tekstTrybGry.setCharacterSize(50);
     tekstWielkoscPlanszy.setCharacterSize(50);
     tekstWarunekWygranej.setCharacterSize(50);
+    tekstKoniecGry.setCharacterSize(50);
 
     tekstTrybGry.setPosition(sf::Vector2f(450+700,150));
     tekstWielkoscPlanszy.setPosition(sf::Vector2f(450+700,400));
     tekstWarunekWygranej.setPosition(sf::Vector2f(450+700,600));
+    tekstKoniecGry.setPosition(sf::Vector2f(20,400)); 
 
-    tekstTrybGry.setFillColor(sf::Color::White);
-    tekstWielkoscPlanszy.setFillColor(sf::Color::White);
-    tekstWarunekWygranej.setFillColor(sf::Color::White);
+    tekstTrybGry.setFillColor(sf::Color::Red);
+    tekstWielkoscPlanszy.setFillColor(sf::Color::Green);
+    tekstWarunekWygranej.setFillColor(sf::Color::Blue);
 
     sf::Sprite przyciskStart, przyciskGvsG, przyciskGvsK;
     sf::Texture teksturaStart, teksturaGvsG, teksturaGvsK;
@@ -184,6 +187,7 @@ int main() {
 
                 //Gra
                 if(czas > DELAY && okno == Gra) {
+                    // gracz vs gracz
                     if(GM.tryb_gry == 0 && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                         for(int i=0; i<GM.wielkosc_planszy; i++) {
                             for(int j=0; j<GM.wielkosc_planszy; j++) {
@@ -192,11 +196,22 @@ int main() {
                                         std::cout << "Ruch[" << GM.aktualnyGracz->znak << "]: " << i << " " << j << std::endl;
                                         if (GM.plansza->wygrana(GM.aktualnyGracz)) {
                                             std::cout << "Koniec gry. Wygral: " << GM.aktualnyGracz->znak << std::endl;
+                                            if(GM.aktualnyGracz->znak == 'X') {
+                                                tekstKoniecGry.setString("Koniec gry.\n\tWygral gracz X");
+                                                tekstKoniecGry.setFillColor(sf::Color::Red);
+                                            }
+                                            else if(GM.aktualnyGracz->znak == 'O') {
+                                                tekstKoniecGry.setString("Koniec gry.\n\tWygral gracz O");
+                                                tekstKoniecGry.setFillColor(sf::Color::Green);
+                                            }
+                                            
                                             czas = 0;
                                             okno = KoniecGry;
                                         } 
                                         else if(!GM.czyZostalyRuchy()) {
                                             std::cout << "Koniec gry. Remis!" << std::endl;
+                                            tekstKoniecGry.setString("Koniec gry.\n\tRemis!");
+                                            tekstKoniecGry.setFillColor(sf::Color::Yellow);
                                             czas = 0;
                                             okno = KoniecGry;
                                         }
@@ -208,6 +223,7 @@ int main() {
                             }
                         }
                     }
+                    // gracz vs komputer
                     if(GM.tryb_gry == 1) {
                         if(GM.aktualnyGracz == GM.graczX && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                             for(int i=0; i<GM.wielkosc_planszy; i++) {
@@ -217,11 +233,21 @@ int main() {
                                             std::cout << "Ruch[" << GM.aktualnyGracz->znak << "]: " << i << " " << j << std::endl;
                                             if (GM.plansza->wygrana(GM.aktualnyGracz)) {
                                                 std::cout << "Koniec gry. Wygral: " << GM.aktualnyGracz->znak << std::endl;
+                                                if(GM.aktualnyGracz->znak == 'X') {
+                                                    tekstKoniecGry.setString("Koniec gry.\n\tWygrales!");
+                                                    tekstKoniecGry.setFillColor(sf::Color::Green);
+                                                }
+                                                else if(GM.aktualnyGracz->znak == 'O') {
+                                                    tekstKoniecGry.setString("Koniec gry.\n\tPrzegrales..");
+                                                    tekstKoniecGry.setFillColor(sf::Color::Red);
+                                                }
                                                 czas = 0;
                                                 okno = KoniecGry;
                                             } 
                                             else if(!GM.czyZostalyRuchy()) {
                                                 std::cout << "Koniec gry. Remis!" << std::endl;
+                                                tekstKoniecGry.setString("Koniec gry.\n\tRemis!");
+                                                tekstKoniecGry.setFillColor(sf::Color::Yellow);
                                                 czas = 0;
                                                 okno = KoniecGry;
                                             }
@@ -282,6 +308,7 @@ int main() {
                 window.draw(tekstTrybGry);
                 window.draw(tekstWielkoscPlanszy);
                 window.draw(tekstWarunekWygranej);
+                window.draw(tekstKoniecGry);
                 for(int i=0; i<GM.wielkosc_planszy; i++) {
                     for(int j=0; j<GM.wielkosc_planszy; j++) {
                         window.draw(GM.plansza->macierzPol[i][j]->spritePola);
@@ -298,10 +325,20 @@ int main() {
                 std::cout << "Ruch[" << GM.aktualnyGracz->znak << "]: " << ruchK[0] << " " << ruchK[1] << std::endl;
                 if (GM.plansza->wygrana(GM.aktualnyGracz)) {
                     std::cout << "Koniec gry. Wygral: " << GM.aktualnyGracz->znak << std::endl;
+                    if(GM.aktualnyGracz->znak == 'X') {
+                        tekstKoniecGry.setString("Koniec gry.\n\tWygrales!");
+                        tekstKoniecGry.setFillColor(sf::Color::Green);
+                    }
+                    else if(GM.aktualnyGracz->znak == 'O') {
+                        tekstKoniecGry.setString("Koniec gry.\n\tPrzegrales..");
+                        tekstKoniecGry.setFillColor(sf::Color::Red);
+                    }
                     okno = KoniecGry;
                 } 
                 else if(!GM.czyZostalyRuchy()) {
                     std::cout << "Koniec gry. Remis!" << std::endl;
+                    tekstKoniecGry.setString("Koniec gry.\n\tRemis!");
+                    tekstKoniecGry.setFillColor(sf::Color::Yellow);
                     okno = KoniecGry;
                 }
                 else {
