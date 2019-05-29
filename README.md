@@ -30,6 +30,7 @@
     - [x] h. kursor
 
 - [x] 7. Ogarnac maina()
+
 - [ ] 8. Komentarze:
     - [x] a. GameMaster
     - [ ] b. Plansza
