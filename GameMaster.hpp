@@ -14,7 +14,6 @@ class GameMaster {
     int tryb_gry;
     int wielkosc_planszy;
     int warunek_wygranej;
-    bool wyjscie = false;
 
     enum Okno {Start, WyborTrybuGry, WyborWielkosciPlanszy, WyborWarunkuWygranej, Gra, KoniecGry};
     Okno okno;

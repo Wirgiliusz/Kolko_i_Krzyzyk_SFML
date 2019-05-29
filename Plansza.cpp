@@ -25,10 +25,6 @@ Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
     }
 }
 
-void Plansza::wyswietlPlansze() {
-    
-}
-
 bool Plansza::wygrana(Gracz* gracz) {
     bool win = true;
     //przechodzi przez wszystkie pola
