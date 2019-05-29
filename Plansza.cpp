@@ -1,10 +1,8 @@
 #include "Plansza.hpp"
-//#include "rang.hpp"
-
 #include <iostream>
 
 using namespace std;
-//using namespace rang;
+
 
 Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
     this->warunek_wygranej = warunek_wygranej;

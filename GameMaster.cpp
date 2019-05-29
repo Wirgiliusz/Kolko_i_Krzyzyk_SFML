@@ -4,6 +4,7 @@
 
 using namespace std;
 
+
 GameMaster::GameMaster() {
     graczX = new Gracz('X');
     graczO = new Gracz('O');

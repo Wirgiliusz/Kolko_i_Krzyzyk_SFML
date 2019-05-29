@@ -1,7 +1,6 @@
 #include "Pole.hpp"
 
 
-
 Pole::Pole(char stan, float wielkosc, int posX, int posY) {
     this->stan = stan;
     this->wielkosc = wielkosc;
