@@ -52,4 +52,7 @@ int main() {
             -> porownuje czy juz taki tam jest
             -> jesli tak to bierze wynik z niego
             -> na koncu minimax zapisuje do mapy stan planszy i wynik
+
+[ ] 7. Komentarze
+
 */
