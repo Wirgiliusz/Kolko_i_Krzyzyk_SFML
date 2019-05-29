@@ -53,5 +53,5 @@ class GameMaster {
     int minimax(int glebokosc, bool isMax);
     std::string znajdzNajlepszyRuch();
 
-    void menu();
+    void gra();
 };

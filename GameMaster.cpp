@@ -220,7 +220,7 @@ std::string GameMaster::znajdzNajlepszyRuch() {
     return najlepszyRuch;
 }
 
-void GameMaster::menu() {
+void GameMaster::gra() {
     while(window.isOpen()) {
         sf::Event event;
         sf::Vector2i mousePos = sf::Mouse::getPosition(window);

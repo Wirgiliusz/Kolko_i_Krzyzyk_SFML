@@ -7,7 +7,7 @@ int main() {
     GameMaster GM;
 
 
-    GM.menu();
+    GM.gra();
     
     
     return 0;
