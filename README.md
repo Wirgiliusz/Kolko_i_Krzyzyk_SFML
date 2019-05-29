@@ -29,5 +29,9 @@
 	- [x] g. restart gry
     - [x] h. kursor
 
-- [ ] 7. Ogarnac maina()
+- [x] 7. Ogarnac maina()
+- [ ] 8. Komentarze:
+    - [x] a. GameMaster
+    - [ ] b. Plansza
+    - [ ] c. Pole
 	
