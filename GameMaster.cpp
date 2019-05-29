@@ -4,20 +4,39 @@
 
 using namespace std;
 
+// // //
+//  GameMaster.cpp + GameMaster.hpp
+// Opis:
+//  Plik zawierajacy definicje kontruktora klasy GameMaster
+//  oraz definicje jego metod
+// // //
 
+
+// // //
+// Opis:
+//  Kontruktor klasy GameMaster
+//  Tworzy graczy, okno gry, sprite'y, ustawia wartosci poczatkowe
+// Argumenty:
+//  -
+// Zwracana wartosc:
+//  -
+// // //
 GameMaster::GameMaster() {
-    graczX = new Gracz('X');
+    //tworzy 2 graczy (ustawia ich znaki) i przypisuje aktualnego gracza
+    graczX = new Gracz('X');    
     graczO = new Gracz('O');
     aktualnyGracz = graczX;
 
+    //tworzy okno gry, ustawia ilosc fps i chowa kursor myszy
     this->okno = Start;
     this->window.create(sf::VideoMode(1600, 900), "Kolko i Krzyzyk");
     window.setFramerateLimit(60);
-
-    this->czas = 0;
-
     window.setMouseCursorVisible(false);
 
+    //ustawia poczatkowy czas na 0
+    this->czas = 0;
+
+    //ustawia napisy
     czcionka.loadFromFile("fonts\\Market_Deco.ttf");
     tekstTrybGry.setFont(czcionka);
     tekstWielkoscPlanszy.setFont(czcionka);
@@ -42,7 +61,7 @@ GameMaster::GameMaster() {
     teksturaKursorO.loadFromFile("sprites\\Okursor2.png");
     kursor.setTexture(teksturaKursorX);
 
-    
+    //ustawia przyciski
     teksturaStart.loadFromFile("sprites\\start.png");
     przyciskStart.setTexture(teksturaStart);
     przyciskStart.setPosition(450,300);
@@ -55,7 +74,6 @@ GameMaster::GameMaster() {
     przyciskGvsK.setTexture(teksturaGvsK);
     przyciskGvsK.setPosition(450,100+300+100);
 
-    
     tekstura3x3.loadFromFile("sprites\\3x3.png");
     przycisk3x3.setTexture(tekstura3x3);
     przycisk3x3.setPosition(460,75);
@@ -68,7 +86,6 @@ GameMaster::GameMaster() {
     przycisk5x5.setTexture(tekstura5x5);
     przycisk5x5.setPosition(460,75+200+75+200+75);
 
-    
     tekstura1zrzedu.loadFromFile("sprites\\1zrzedu.png");
     przycisk1zrzedu.setTexture(tekstura1zrzedu);
     przycisk1zrzedu.setPosition(637,33);
@@ -89,64 +106,119 @@ GameMaster::GameMaster() {
     przycisk5zrzedu.setTexture(tekstura5zrzedu);
     przycisk5zrzedu.setPosition(637,33+140+33+140+33+140+33+140+33);
 
-    
     teksturaOdnowa.loadFromFile("sprites\\odnowa.png");
     przyciskOdnowa.setTexture(teksturaOdnowa);
     przyciskOdnowa.setPosition(87,500);
 }
 
+// // //
+// Opis:
+//  Funkcja tworzaca plansze
+// Argumenty:
+//  int wielkosc_planszy - wielkosc planszy postaci n x n
+//  int warunek_wygranej - warunek wygranej na danej planszy postaci n pod rzad
+// Zwracana wartosc:
+//  Plansza* - wskaznik na stworzona plansze
+// // //
 Plansza* GameMaster::stworzPlansze(int wielkosc_planszy, int warunek_wygranej) {
     this->wielkosc_planszy = wielkosc_planszy;
     return new Plansza(wielkosc_planszy, warunek_wygranej);
 }
 
+// // //
+// Opis:
+//  Funkcja ustawiajaca kolejne ture
+// Argumenty:
+//  -
+// Zwracana wartosc:
+//  -
+// // //
 void GameMaster::nastepnaTura() {
+    //zmienia aktualnego gracza na drugiego
     if(aktualnyGracz == graczX)
         aktualnyGracz = graczO;
     else
         aktualnyGracz = graczX;
 }
 
+// // //
+// Opis:
+//  Funkcja pozwalajaca na wykonanie ruchu
+// Argumenty:
+//  int i - indeks wiersza w ktorym ma wykonac sie ruch
+//  int j - indeks kolumny w ktorej ma wykonac sie ruch
+// Zwracana wartosc:
+//  bool - czy udalo sie wykonac ruch
+// // //
 bool GameMaster::ruch(int i, int j) {
     return aktualnyGracz->wykonajRuch(plansza->macierzPol[i][j]);
 }
 
+// // //
+// Opis:
+//  Funkcja sprawdzajaca czy pozostaly jakies mozliwe ruchy
+// Argumenty:
+//  -
+// Zwracana wartosc:
+//  bool - czy zostaly ruchy
+// // //
 bool GameMaster::czyZostalyRuchy() {
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int j=0; j<wielkosc_planszy; j++) {
-            if(plansza->macierzPol[i][j]->isEmpty()) {
-                return true;
+            if(plansza->macierzPol[i][j]->isEmpty()) { //jesli ktorekolwiek pole puste
+                return true;    //to true
             }
         }
     }
-    return false;
+    return false;   //inaczej false
 }
 
+// - - - - - - - - - - MinMax - - - - - - - - - - //
+
+// // //
+// Opis:
+//  Funkcja oceniajaca dla algorytmu Minimax
+// Argumenty:
+//  int glebokosc - glebokosc wywolan rekurencyjnych funkcji Minimax
+// Zwracana wartosc:
+//  int - wartosc zagrania
+// // //
 int GameMaster::ocen(int glebokosc) {
-    if(plansza->wygrana(graczO)) {
-        return +10 - glebokosc;
+    if(plansza->wygrana(graczO)) {  //jesli wygral gracz O
+        return +10 - glebokosc;     //to +
     }
-    else if(plansza->wygrana(graczX)) {
-        return -10 + glebokosc;
+    else if(plansza->wygrana(graczX)) { //jesli wygral komputer X
+        return -10 + glebokosc;     //to -
     }
-    return 0;
+    return 0;   //inaczej 0
 }
 
+// // //
+// Opis:
+//  Funkcja minimax dla algorytmu sztucznej inteligencji
+// Argumenty:
+//  int glebokosc - glebokosc wywolan rekurencyjnych funkcji Minimax
+//  bool isMax - czy oceniamy gracza czy komputer
+// Zwracana wartosc:
+//  int - wynik danego przebiegu rozgrywki
+// // //
 int GameMaster::minimax(int glebokosc, bool isMax) {
-    std::string stanPlanszy = "";
+    std::string stanPlanszy = "";   //string zapamietujacy ustawienie planszy
+    //zapisuje wyglad planszy do stringa
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int j=0; j<wielkosc_planszy; j++) {
             stanPlanszy += plansza->macierzPol[i][j]->stan;
         }
     }
-    auto szukaj = znaneWyniki.find(stanPlanszy);
+    auto szukaj = znaneWyniki.find(stanPlanszy);    //szuka czy dane ustawienie juz bylo
     if (szukaj != znaneWyniki.end()) {
-        return szukaj->second;
+        return szukaj->second;  //jesli tak to zwraca jego wczesniej wyliczona wartosc
     }
    
 
-    int wynik = ocen(glebokosc);
+    int wynik = ocen(glebokosc);    //zapisuje aktualny wynik planszy
 
+    //jesli byl koniec lub remis to go zwraca
     if(wynik == 10 - glebokosc) {
         return wynik;
     }
@@ -160,55 +232,67 @@ int GameMaster::minimax(int glebokosc, bool isMax) {
         return 0;
     }
 
-    if(isMax) {
-        int najlepszy = -1000;
+    if(isMax) { //jesli maksymalizujemy
+        int najlepszy = -1000;  //poczatkowo najlepszy = -1000
 
+        // wykonuje kazdy mozliwy ruch
         for(int i=0; i<wielkosc_planszy; i++) {
             for(int j=0; j<wielkosc_planszy; j++) {
                 if(plansza->macierzPol[i][j]->isEmpty()) {
                     char backup;
                     backup = plansza->macierzPol[i][j]->stan;
                     graczO->wykonajRuch(plansza->macierzPol[i][j]);
-                    najlepszy = std::max(najlepszy, minimax(glebokosc+1, !isMax));
+                    najlepszy = std::max(najlepszy, minimax(glebokosc+1, !isMax));  //rekurencyjnie wywoluje minimax i zapisuje jego wynik
                     plansza->macierzPol[i][j]->zmienStan(backup);
                 }
             }
         }
-        znaneWyniki.insert({stanPlanszy, najlepszy});
-        return najlepszy;
+        znaneWyniki.insert({stanPlanszy, najlepszy});   //dodaje wynik do znanych wynikow
+        return najlepszy;   //i go zwraca
     }
-    else {
-        int najlepszy = 1000;
+    else {  //jesli minimalizujemy
+        int najlepszy = 1000; //poczatkowo najlepszy = 1000;
 
+        // wykonuje kazdy mozliwy ruch
         for(int i=0; i<wielkosc_planszy; i++) {
             for(int j=0; j<wielkosc_planszy; j++) {
                 if(plansza->macierzPol[i][j]->isEmpty()) {
                     char backup;
                     backup = plansza->macierzPol[i][j]->stan;
                     graczX->wykonajRuch(plansza->macierzPol[i][j]);
-                    najlepszy = std::min(najlepszy, minimax(glebokosc+1, !isMax));
+                    najlepszy = std::min(najlepszy, minimax(glebokosc+1, !isMax));  //rekurencyjnie wywoluje minimax i zapisuje jego wynik
                     plansza->macierzPol[i][j]->zmienStan(backup);
                 }
             }
         }
-        znaneWyniki.insert({stanPlanszy, najlepszy});
-        return najlepszy;
+        znaneWyniki.insert({stanPlanszy, najlepszy});   //dodaje wynik do znanych wynikow
+        return najlepszy;   //i go zwraca
     }
 }
 
+// // //
+// Opis:
+//  Funkcja znajdujaca najlepszy ruch 
+// Argumenty:
+//  -
+// Zwracana wartosc:
+//  std::string najlepszyRuch - przechowuje indeksy najlepszego ruchu
+// // //
 std::string GameMaster::znajdzNajlepszyRuch() {
     int najlepszaWartosc = -1000;
-    std::string najlepszyRuch;
+    std::string najlepszyRuch;  //przechowuje indeksy najlpszego ruchu
 
+    //wykonuje kazdy mozliwy ruch
     for(int i=0; i<wielkosc_planszy; i++) {
         for(int j=0; j<wielkosc_planszy; j++) {
             if(plansza->macierzPol[i][j]->isEmpty()) {
                 char backup;
                 backup = plansza->macierzPol[i][j]->stan;
                 graczO->wykonajRuch(plansza->macierzPol[i][j]);
-                int wartoscRuchu = minimax(0, false);
+                int wartoscRuchu = minimax(0, false);   //wykonuje algorytm minimax
                 plansza->macierzPol[i][j]->zmienStan(backup);
 
+                //jesli udalo sie znalezc lepszy to go zapisuje
                 if(wartoscRuchu > najlepszaWartosc) {
                     najlepszyRuch = std::to_string(i);
                     najlepszyRuch += std::to_string(j);
@@ -217,17 +301,28 @@ std::string GameMaster::znajdzNajlepszyRuch() {
             }
         }
     }
-    return najlepszyRuch;
+    return najlepszyRuch;   //zwraca najlepszy ruch
 }
 
+// // //
+// Opis:
+//  Funkcja wyswietlajaca menu i przebieg gry
+// Argumenty:
+//  -
+// Zwracana wartosc:
+//  -
+// // //
 void GameMaster::gra() {
+    //jesli okno otwarte
     while(window.isOpen()) {
-        sf::Event event;
-        sf::Vector2i mousePos = sf::Mouse::getPosition(window);
+        sf::Event event;    //tworzy zdarzenia
+        sf::Vector2i mousePos = sf::Mouse::getPosition(window); //zapisuje pozycje myszy
 
-        float elapsed = clock.restart().asSeconds();
+        //odlicza czas
+        float elapsed = clock.restart().asSeconds();    
         czas += elapsed;
 
+        //ustawia kursor
         kursor.setPosition(mousePos.x-15,mousePos.y-15);
         if(aktualnyGracz == graczX) {
             kursor.setTexture(teksturaKursorX);
@@ -236,6 +331,7 @@ void GameMaster::gra() {
             kursor.setTexture(teksturaKursorO);
         }
 
+        //ustawia wyswietlany tryb gry
         if(tryb_gry == 0) {
             tekstTrybGry.setString("Tryb gry:\n\tGracz\n\t  vs\n\tGracz");
         } 
@@ -410,6 +506,7 @@ void GameMaster::gra() {
             }  
         }
 
+        //wyswietlanie na ekranie
         window.clear();
         switch(okno) {
             case Start:
