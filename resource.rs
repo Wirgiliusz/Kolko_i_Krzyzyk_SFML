@@ -1,0 +1,1 @@
+100 ICON "sprites\\ikona.ico"
