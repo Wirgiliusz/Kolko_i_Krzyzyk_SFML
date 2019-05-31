@@ -1,5 +1,4 @@
 #include "Plansza.hpp"
-#include <iostream>
 
 using namespace std;
 
