@@ -2,6 +2,8 @@
 
 ![Text](https://puu.sh/DycZU/b6c3d8e97a.png "Game Screen")
 
+### [Download.zip](https://puu.sh/DzOSa/1ceb5ab55f.zip)
+
 ## TODO
 - [x] 1. Mozliwosc zmiany wielkosci planszy
 
