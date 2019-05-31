@@ -2,8 +2,26 @@
 
 using namespace std;
 
+// // //
+//  Plansza.cpp + Plansza.hpp
+// Opis:
+//  Plik zawierajacy definicje kontruktora klasy Plansza
+//  oraz jej metod.
+// // //
 
+
+// // //
+// Opis:
+//  Kontruktor klasy Plansza.
+//  Ustawia poczatkowe wartosci oraz tworzy pola i plansze o zadanej wielkosci
+// Argumenty:
+//  int wielkosc_planszy - wielkosc planszy jaka ma zostac stworzona
+//  int warunek_wygranej - warunek wygranej gry (ilosc z rzadu)
+// Zwracana wartosc:
+//  -
+// // //
 Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
+    //ustawia warunki gry
     this->warunek_wygranej = warunek_wygranej;
     this->wielkosc_planszy = wielkosc_planszy;
     macierzPol = new Pole** [wielkosc_planszy];     //nowa tablica na tablice
@@ -11,6 +29,7 @@ Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
         macierzPol[i] = new Pole* [wielkosc_planszy];   //wpisuje tablice do tablicy tworzac macierz wskaznikow na pola
     }
 
+    //polozenie pierwszego pola
     int x = 500;
     int y = 150;
 
@@ -24,6 +43,14 @@ Plansza::Plansza(int wielkosc_planszy, int warunek_wygranej) {
     }
 }
 
+// // //
+// Opis:
+//  Funkcja sprawdzajaca wygrana danego gracza.
+// Argumenty:
+//  Gracz* gracz - wskaznik na gracza dla ktorego ma zostac sprawdzona wygrana
+// Zwracana wartosc:
+//  bool - true jesli jest wygrana; false jesli nie ma
+// // //
 bool Plansza::wygrana(Gracz* gracz) {
     bool win = true;
     //przechodzi przez wszystkie pola
@@ -89,7 +116,6 @@ bool Plansza::wygrana(Gracz* gracz) {
                         win = true; //i reset
                     }
                 }
-
             }
         }
     }

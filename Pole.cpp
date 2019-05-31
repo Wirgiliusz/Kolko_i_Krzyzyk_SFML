@@ -1,6 +1,25 @@
 #include "Pole.hpp"
 
+// // //
+//  Pole.cpp + Pole.hpp
+// Opis:
+//  Plik zawierajacy definicje kontruktora klasy Pole
+//  i jego metod.
+// // //
 
+
+// // //
+// Opis:
+//  Kontruktor klasy Pole
+//  Tworzy pole o zadanym stanie, wielkosci i polozeniu.
+// Argumenty:
+//  char stan - stan pola (puste, X, O)
+//  float wielkosc - wielkosc pola
+//  int posX - polozenie x pola
+//  intposY - polozenie y pola
+// Zwracana wartosc:
+//  -
+// // //
 Pole::Pole(char stan, float wielkosc, int posX, int posY) {
     this->stan = stan;
     this->wielkosc = wielkosc;
@@ -16,10 +35,14 @@ Pole::Pole(char stan, float wielkosc, int posX, int posY) {
     this->spritePola.setPosition(posX,posY);
 }
 
-Pole::Pole() {
-    this->stan = ' ';
-}
-
+// // //
+// Opis:
+//  Funkcja zmieniajaca stan pola
+// Argumenty:
+//  char znak - znak na ktory ma ustawic sie pole (pusty, X, O)
+// Zwracana wartosc:
+//  -
+// // //
 void Pole::zmienStan(char znak) {
     this->stan = znak;
     if(znak == 'X') {
@@ -33,6 +56,14 @@ void Pole::zmienStan(char znak) {
     }
 }
 
+// // //
+// Opis:
+//  Funkcja sprawdzajaca czy pole jest puste
+// Argumenty:
+//  -
+// Zwracana wartosc:
+//  bool - true jesli jest puste; false jesli nie
+// // //
 bool Pole::isEmpty() {
     if(stan == 'X' || stan == 'O')
         return false;

@@ -53,9 +53,9 @@ int main() {
             -> jesli tak to bierze wynik z niego
             -> na koncu minimax zapisuje do mapy stan planszy i wynik
 
-[ ] 7. Komentarze:
+[x] 7. Komentarze:
     [x] a. GameMaster
-    [ ] b. Plansza
-    [ ] c. Pole
+    [x] b. Plansza
+    [x] c. Pole
 
 */
