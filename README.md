@@ -31,8 +31,8 @@
 
 - [x] 7. Ogarnac maina()
 
-- [ ] 8. Komentarze:
+- [x] 8. Komentarze:
     - [x] a. GameMaster
-    - [ ] b. Plansza
-    - [ ] c. Pole
+    - [x] b. Plansza
+    - [x] c. Pole
 	
