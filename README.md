@@ -12,6 +12,7 @@ Dodatkowo gra została wzbogacona w możliwość zmiany wielkości planszy oraz 
 
 ## Efekt końcowy
 Poniżysz obrazek prezentuje wygląd gry w trakcie rozgrywki na planszy 5x5 z warunkiem wygranej ustawionej na 4 z rzędu.
+
 <img src="https://puu.sh/GcExv/03bdea19a2.png" width="700">
 
 ---
