@@ -1,10 +1,26 @@
 # Kolko i Krzyzyk SFML
+Projekt rozbudowanej gry kółko i krzyżyk wraz z interfejsem graficznym oraz algorytmem sztucznej inteligencji min-max.
 
-![Text](https://puu.sh/DycZU/b6c3d8e97a.png "Game Screen")
+---
 
-### [Download.zip](https://puu.sh/DzOSa/1ceb5ab55f.zip)
+## Opis projektu
+Projekt jest implementacją popularnej gry "kółko i krzyżyk" wraz z algorytmem sztucznej inteligencji "min-max". 
+Gra posiada interfejs graficzny stworzony przy użyciu biblioteki SFML.
+Dodatkowo gra została wzbogacona w możliwość zmiany wielkości planszy oraz warunku wygranej.
 
-## TODO
+---
+
+## Efekt końcowy
+Poniżysz obrazek prezentuje wygląd gry w trakcie rozgrywki na planszy 5x5 z warunkiem wygranej ustawionej na 4 z rzędu.
+<img src="https://puu.sh/GcExv/03bdea19a2.png" width="700">
+
+---
+
+### TO-DO
+
+<details>
+	<summary>Ukończone zadania</summary>
+
 - [x] 1. Mozliwosc zmiany wielkosci planszy
 
 - [x] 2. Sprawdzanie wygranej dla roznych warunkow wygranej
@@ -38,3 +54,4 @@
     - [x] b. Plansza
     - [x] c. Pole
 	
+</details>
