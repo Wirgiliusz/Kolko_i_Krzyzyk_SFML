@@ -1,3 +1,9 @@
-all: main.cpp GameMaster.cpp Plansza.cpp Pole.cpp Gracz.cpp
-	g++ -Wall -pedantic -mwindows main.cpp ikona.o GameMaster.cpp Plansza.cpp Pole.cpp Gracz.cpp -IC:\\Users\\r0ck\\Desktop\\SFML-2.4.0\\include -LC:\\Users\\r0ck\\Desktop\\SFML-2.4.0\\lib -lsfml-graphics -lsfml-window -lsfml-system -o Kolko_i_Krzyzyk
-#g++ -Wall -pedantic main.cpp GameMaster.cpp Plansza.cpp Pole.cpp Gracz.cpp -IC:\\Users\\user\\Desktop\\SFML-2.5.1\\include -LC:\\Users\\user\\Desktop\\SFML-2.5.1\\lib -lsfml-graphics -lsfml-window -lsfml-system
+COMPILER = g++
+SOURCES := $(wildcard src/*.cpp)
+INCLUDES := $(wildcard src/*.hpp)
+RESOURCES := $(wildcard res/*.o)
+SFML_PATH := $(wildcard C:\\Users\\r0ck\\Desktop\\Wirgiliusz\\Programowanie\\SFML-2.4.0)
+EXE_NAME = Tic-Tac-Toe
+
+all: $(SOURCES)
+	$(COMPILER) -Wall -pedantic -mwindows $(RESOURCES) $(SOURCES) -I$(SFML_PATH)\\include -L$(SFML_PATH)\\lib -lsfml-graphics -lsfml-window -lsfml-system -o $(EXE_NAME)
